@@ -162,7 +162,7 @@
             </div>
         </div>
     </div>
-    <div class="header-main love-sticky py-2 py-lg-3 py-xl-0 shadow-sm">
+    {{-- <div class="header-main love-sticky py-2 py-lg-3 py-xl-0 shadow-sm">
         <div class="container">
             <aside class="aside d-flex flex-column d-xl-none">
                 <div class="aside-close p-3 pb-2">
@@ -608,5 +608,5 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --}}
 </header>
