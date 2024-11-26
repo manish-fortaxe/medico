@@ -21,12 +21,14 @@
 @section('content')
     <div class="__inline-61">
         @php($decimalPointSettings = !empty(getWebConfig(name: 'decimal_point_settings')) ? getWebConfig(name: 'decimal_point_settings') : 0)
-        
+
                 @include('web-views.partials._home-top-slider',['main_banner'=>$main_banner])
 
         @if ($flashDeal['flashDeal'] && $flashDeal['flashDealProducts'])
             @include('web-views.partials._flash-deal', ['decimal_point_settings'=>$decimalPointSettings])
         @endif
+
+        @include('web-views.partials._category-section-home')
 
         @if ($featuredProductsList->count() > 0 )
             <div class="container py-4 rtl px-0 px-md-3">
@@ -60,8 +62,6 @@
                 </div>
             </div>
         @endif
-
-        @include('web-views.partials._category-section-home')
 
         @if($web_config['featured_deals'] && (count($web_config['featured_deals'])>0))
             <section class="featured_deal">

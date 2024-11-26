@@ -315,7 +315,7 @@
                             <a class="nav-link" href="{{route('home')}}">{{ translate('home')}}</a>
                         </li>
 
-                        @if(getWebConfig(name: 'product_brand'))
+                        {{-- @if(getWebConfig(name: 'product_brand'))
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#"
                                    data-toggle="dropdown">{{ translate('brand') }}</a>
@@ -348,7 +348,7 @@
                                     </li>
                                 </ul>
                             </li>
-                        @endif
+                        @endif --}}
                         @php($discount_product = App\Models\Product::with(['reviews'])->active()->where('discount', '!=', 0)->count())
                         @if ($discount_product>0)
                             <li class="nav-item dropdown {{request()->is('/')?'active':''}}">
