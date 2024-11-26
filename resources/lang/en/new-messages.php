@@ -339,7 +339,7 @@ return [
 	"Explore" => "Explore",
 	"Now" => "Now",
 	"view_all" => "View all",
-	"featured_products" => "Featured Medicines",
+	"featured_products" => "High-demand Speciality Medicine",
 	"Quick" => "Quick",
 	"recommended_product" => "Recommended Medicine",
 	"buy_now" => "Buy now",
