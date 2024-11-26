@@ -122,7 +122,7 @@
         <div id="loading" class="d--none">
            <div class="text-center">
             <img width="200" alt=""
-                 src="{{ getStorageImages(path: getWebConfig(name: 'loader_gif'), type: 'source', source: theme_asset(path: 'public/assets/front-end/img/loader.gif')) }}">
+                 src="{{ getStorageImages(path: getWebConfig(name: 'loader_gif'), type: 'source', source: theme_asset(path: 'public/assets/front-end/img/med-loader.gif')) }}">
             </div>
         </div>
     </div>
