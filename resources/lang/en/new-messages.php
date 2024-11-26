@@ -1391,7 +1391,7 @@ return [
 	"update_tax" => "Update tax",
 	"cash" => "Cash",
 	"card" => "Card",
-	"discounted_products" => "Discounted products",
+	"discounted_products" => "Discounted Medicines",
 	"forgot_password_verification_by" => "Forgot password verification by",
 	"announcement_setup" => "Announcement setup",
 	"background_color" => "Background color",

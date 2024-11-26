@@ -107,7 +107,7 @@
 
         @include('web-views.partials._deal-of-the-day', ['decimal_point_settings'=>$decimalPointSettings])
 
-        <section class="new-arrival-section">
+        {{-- <section class="new-arrival-section">
 
             @if ($newArrivalProducts->count() >0 )
                 <div class="container rtl mt-4">
@@ -146,7 +146,7 @@
                     @endif
                 </div>
             </div>
-        </section>
+        </section> --}}
 
 
         @if (count($footer_banner) > 1)
@@ -173,7 +173,7 @@
             </div>
         @endif
 
-        @if($web_config['brand_setting'] && $brands->count() > 0)
+        {{-- @if($web_config['brand_setting'] && $brands->count() > 0)
             <section class="container rtl pt-4">
 
                 <div class="section-header">
@@ -202,7 +202,7 @@
                     </div>
                 </div>
             </section>
-        @endif
+        @endif --}}
 
         @if ($homeCategories->count() > 0)
             @foreach($homeCategories as $category)
