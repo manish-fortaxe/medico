@@ -36,6 +36,8 @@ use App\Http\Controllers\Payment_Methods\SenangPayController;
 use App\Http\Controllers\Payment_Methods\MercadoPagoController;
 use App\Http\Controllers\Payment_Methods\BkashPaymentController;
 use App\Http\Controllers\Payment_Methods\PaystackController;
+use App\Http\Controllers\Web\BlogListController;
+use App\Http\Controllers\Web\MoleculeListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,6 +120,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
         Route::get(Pages::REFUND_POLICY[URI], 'getRefundPolicyView')->name('refund-policy');
         Route::get(Pages::RETURN_POLICY[URI], 'getReturnPolicyView')->name('return-policy');
         Route::get(Pages::PRIVACY_POLICY[URI], 'getPrivacyPolicyView')->name('privacy-policy');
+        Route::get(Pages::DISCLAIMER[URI], 'getDisclaimerView')->name('disclaimer');
         Route::get(Pages::CANCELLATION_POLICY[URI], 'getCancellationPolicyView')->name('cancellation-policy');
         Route::get(Pages::TERMS_AND_CONDITION[URI], 'getTermsAndConditionView')->name('terms');
     });
@@ -128,6 +131,15 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
 
     Route::controller(ProductListController::class)->group(function () {
         Route::get('products', 'products')->name('products');
+    });
+
+    Route::controller(BlogListController::class)->group(function () {
+        Route::get('blogs', 'blogs')->name('blogs');
+        Route::get('blog/{slug}', 'singleBlog')->name('single-blog');
+    });
+    Route::controller(MoleculeListController::class)->group(function () {
+        Route::get('molecules', 'molecules')->name('molecules');
+        Route::get('molecule/{slug}', 'singleMolecule')->name('single-molecule');
     });
 
     Route::post('ajax-filter-products', 'ShopViewController@ajax_filter_products')->name('ajax-filter-products'); // Theme fashion, ALl purpose
@@ -181,6 +193,7 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
         Route::get('user-account', 'user_account')->name('user-account')->middleware('customer');
         Route::post('user-account-update', 'getUserProfileUpdate')->name('user-update')->middleware('customer');
         Route::post('user-account-picture', 'user_picture')->name('user-picture');
+        Route::get('my-prescription', 'my_prescription')->name('my-prescription');
         Route::get('account-address-add', 'account_address_add')->name('account-address-add');
         Route::get('account-address', 'account_address')->name('account-address');
         Route::post('account-address-store', 'address_store')->name('address-store');

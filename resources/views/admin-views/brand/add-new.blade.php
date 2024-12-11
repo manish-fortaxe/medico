@@ -1,6 +1,6 @@
 @extends('layouts.back-end.app')
 
-@section('title', translate('brand_Add'))
+@section('title', translate('manufacturer_Add'))
 
 @section('content')
     <div class="content container-fluid">
@@ -8,7 +8,7 @@
         <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
             <h2 class="h1 mb-0 d-flex align-items-center gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/brand.png') }}" alt="">
-                {{ translate('brand_Setup') }}
+                {{ translate('manufacturer_Setup') }}
             </h2>
         </div>
 
@@ -36,7 +36,7 @@
                                             class="form-group {{$lang != $defaultLanguage ? 'd-none':''}} form-system-language-form"
                                             id="{{$lang}}-form">
                                             <label for="name" class="title-color">
-                                                {{ translate('brand_Name') }}
+                                                {{ translate('manufacturer_Name') }}
                                                 <span class="text-danger">*</span>
                                                 ({{strtoupper($lang) }})
                                             </label>

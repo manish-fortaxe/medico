@@ -24,5 +24,8 @@ enum Pages
         VIEW => 'admin-views.business-settings.page.about-us'
     ];
 
-
+    const DISCLAIMER = [
+        URI => 'disclaimer',
+        VIEW => 'admin-views.business-settings.page.disclaimer'
+    ];
 }

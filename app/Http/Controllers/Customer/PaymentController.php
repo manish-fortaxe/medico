@@ -328,7 +328,7 @@ class PaymentController extends Controller
                 return route('checkout-payment');
             }
         }
-
+        $prescription_id = $request['prescription_id'];
         $paymentInfo = new PaymentInfo(
             success_hook: 'digital_payment_success',
             failure_hook: 'digital_payment_fail',
@@ -341,7 +341,8 @@ class PaymentController extends Controller
             payment_amount: $payment_amount,
             external_redirect_link: $request['payment_platform'] == 'web' ? $request['external_redirect_link'] : null,
             attribute: 'order',
-            attribute_id: idate("U")
+            attribute_id: idate("U"),
+            prescription_id: $prescription_id
         );
 
         $receiverInfo = new Receiver('receiver_name', 'example.png');

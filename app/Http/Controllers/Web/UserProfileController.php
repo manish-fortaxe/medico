@@ -25,6 +25,7 @@ use App\Models\SupportTicket;
 use App\Models\Wishlist;
 use App\Traits\CommonTrait;
 use App\Models\User;
+use App\Models\UserPrescription;
 use App\Utils\CustomerManager;
 use App\Utils\ImageManager;
 use App\Utils\OrderManager;
@@ -149,6 +150,16 @@ class UserProfileController extends Controller
         if (auth('customer')->check()) {
             $shippingAddresses = ShippingAddress::where('customer_id', auth('customer')->id())->latest()->get();
             return view('web-views.users-profile.account-address', compact('shippingAddresses', 'country_restrict_status', 'zip_restrict_status', 'countries', 'zip_codes', 'countriesName', 'countriesCode'));
+        } else {
+            return redirect()->route('home');
+        }
+    }
+
+    public function my_prescription(): View|RedirectResponse
+    {
+        if (auth('customer')->check()) {
+            $prescriptions = UserPrescription::where('user_id', auth('customer')->id())->latest()->get();
+            return view('web-views.users-profile.my-prescription', compact('prescriptions'));
         } else {
             return redirect()->route('home');
         }

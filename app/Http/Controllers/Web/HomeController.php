@@ -10,6 +10,7 @@ use App\Utils\CategoryManager;
 use App\Utils\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Blog;
 use App\Models\Brand;
 use App\Models\BusinessSetting;
 use App\Models\Category;
@@ -168,12 +169,12 @@ class HomeController extends Controller
 
         $recommendedProduct = $this->product->active()->inRandomOrder()->first();
         $footer_banner = $this->banner->where('banner_type', 'Footer Banner')->where('theme', theme_root_path())->where('published', 1)->orderBy('id', 'desc')->get();
-
+        $blogs = Blog::take(4)->get();
         return view(VIEW_FILE_NAMES['home'],
             compact(
                 'flashDeal', 'featuredProductsList', 'topRated', 'bestSellProduct', 'latest_products', 'categories', 'brands',
                 'deal_of_the_day', 'topVendorsList', 'homeCategories', 'brand_setting', 'main_banner', 'main_section_banner',
-                'current_date', 'recommendedProduct', 'footer_banner', 'newArrivalProducts'
+                'current_date', 'recommendedProduct', 'footer_banner', 'newArrivalProducts','blogs'
             )
         );
     }

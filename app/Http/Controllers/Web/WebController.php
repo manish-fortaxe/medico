@@ -34,6 +34,7 @@ use App\Models\Product;
 use App\Models\ProductCompare;
 use App\Models\Seller;
 use App\Models\Setting;
+use App\Models\UserPrescription;
 use App\Models\Wishlist;
 use App\Traits\CommonTrait;
 use App\Traits\SmsGateway;
@@ -1180,6 +1181,13 @@ class WebController extends Controller
     {
         if ($request->has('order_note')) {
             session::put('order_note', $request['order_note']);
+        }
+        $request['prescription_id'] = null;
+        if($request->hasFile('prescription')){
+            $file = $request->file('prescription');
+            $path = $file->store('prescriptions', 'public');
+            $prescription = UserPrescription::create(attributes: ['user_id'=>auth('customer')->id(),'file'=> $path]);
+            Cart::where('customer_id', auth('customer')->id())->update(['prescription_id' => $prescription->id]);
         }
         $response = self::checkValidationForCheckoutPages($request);
         return response()->json($response);

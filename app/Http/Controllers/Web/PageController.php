@@ -115,4 +115,14 @@ class PageController extends Controller
         return view(VIEW_FILE_NAMES['terms_conditions_page'], compact('termsCondition', 'pageTitleBanner', 'robotsMetaContentData'));
     }
 
+    public function getDisclaimerView(): View
+    {
+        $robotsMetaContentData = $this->robotsMetaContentRepo->getFirstWhere(params: ['page_name' => 'disclaimer']);
+        if (!$robotsMetaContentData) {
+            $robotsMetaContentData = $this->robotsMetaContentRepo->getFirstWhere(params: ['page_name' => 'default']);
+        }
+        $disclaimer = getWebConfig(name: 'disclaimer');
+        $pageTitleBanner = $this->businessSettingRepo->whereJsonContains(params: ['type' => 'banner_disclaimer'], value: ['status' => '1']);
+        return view(VIEW_FILE_NAMES['disclaimer_page'], compact('disclaimer', 'pageTitleBanner', 'robotsMetaContentData'));
+    }
 }

@@ -818,9 +818,16 @@
 
 
         <div class="px-3 px-md-0 mt-3 mt-md-0">
-            <form method="get">
+            <form id="prescription-form" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-lg-3">
                     <div class="row">
+                        <div class="col-12 mb-2">
+                            <label for="phoneLabel" class="form-label input-label fs-14 font-semibold">
+                                {{ translate('upload_Prescription') }}
+                            </label>
+                            <input type="file" class="form-control w-100 border-aliceblue" id="prescription" name="prescription" />
+                        </div>
                         <div class="col-12">
                             <label for="phoneLabel" class="form-label input-label fs-14 font-semibold">
                                 {{ translate('order_note') }}

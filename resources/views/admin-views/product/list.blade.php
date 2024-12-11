@@ -70,7 +70,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-lg-4 col-xl-3">
+                        {{-- <div class="col-sm-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label for="name" class="title-color">{{ translate('sub_Category') }}</label>
                                 <select class="js-select2-custom form-control action-get-request-onchange" name="sub_category_id"
@@ -92,7 +92,7 @@
                                             selected {{request('sub_sub_category_id') != null ? '' : 'disabled'}}>{{request('sub_sub_category_id') != null ? $subSubCategory['defaultName'] : translate('select_Sub_Sub_Category') }}</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-12">
                             <div class="d-flex gap-3 justify-content-end">
                                 <a href="{{ route('admin.products.list',['type'=>request('type')]) }}"

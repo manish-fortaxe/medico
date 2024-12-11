@@ -96,24 +96,17 @@
 
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="form-group">
-                                <label class="title-color">{{ translate('sub_Category') }}</label>
-                                <select
-                                    class="js-example-basic-multiple js-states js-example-responsive form-control action-get-request-onchange"
-                                    name="sub_category_id" id="sub-category-select"
-                                    data-id="{{ $product['sub_category_id'] }}"
-                                    data-url-prefix="{{ url('/admin/products/get-categories?parent_id=') }}"
-                                    data-element-id="sub-sub-category-select"
-                                    data-element-type="select">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="form-group">
-                                <label class="title-color">{{ translate('sub_Sub_Category') }}</label>
-                                <select
-                                    class="js-example-basic-multiple js-states js-example-responsive form-control"
-                                    data-id="{{ $product['sub_sub_category_id'] }}"
-                                    name="sub_sub_category_id" id="sub-sub-category-select">
+                                <label for="name" class="title-color">{{ translate('department') }}</label>
+                                <select class="js-select2-custom form-control action-get-request-onchange" name="department_id"
+                                        id="department_id">
+                                    <option value="{{ null }}" selected
+                                            disabled>{{ translate('select_Department') }}</option>
+                                        @foreach ($departments as $department)
+                                            <option value="{{ $department['id'] }}"
+                                                {{ old('name') == $department['id'] ? 'selected' : '' }}>
+                                                {{ $department['name'] }}
+                                            </option>
+                                        @endforeach
                                 </select>
                             </div>
                         </div>
@@ -134,6 +127,17 @@
                                 </div>
                             </div>
                         @endif
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="form-group">
+                                <label for="is_prescription_required" class="title-color">{{ translate('is_Prescription_Required_?') }}</label>
+                                <div class="d-flex align-items-center">
+                                    <input type="radio" id="prescription_yes" name="is_prescription" value="yes" class="mr-1" />
+                                    <label for="prescription_yes" class="mr-3">Yes</label>
+                                    <input type="radio" id="prescription_no" name="is_prescription" value="no" class="mr-1" />
+                                    <label for="prescription_no">No</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="form-group">
                                 <label class="title-color">{{ translate('product_type') }}</label>
@@ -201,7 +205,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="title-color d-flex align-items-center gap-2">
                                     {{ translate('search_tags') }}
@@ -214,6 +218,24 @@
                                 <input type="text" class="form-control" name="tags"
                                        value="@foreach($product->tags as $c) {{ $c->tag.','}} @endforeach"
                                        data-role="tagsinput">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-6 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('reference') }}</label>
+                                <textarea name="reference" class="form-control"> </textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-6 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('disclaimer') }}</label>
+                                <textarea name="disclaimer" class="form-control"> </textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-12 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('indication') }} ({{ translate('please_separate_with_comma') }})</label>
+                                <input type="text" class="form-control" name="indication" />
                             </div>
                         </div>
                     </div>

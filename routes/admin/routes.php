@@ -4,6 +4,7 @@ use App\Enums\ViewPaths\Admin\AddonSetup;
 use App\Enums\ViewPaths\Admin\AllPagesBanner;
 use App\Enums\ViewPaths\Admin\Attribute;
 use App\Enums\ViewPaths\Admin\Banner;
+use App\Enums\ViewPaths\Admin\Blog;
 use App\Enums\ViewPaths\Admin\Brand;
 use App\Enums\ViewPaths\Admin\BusinessSettings;
 use App\Enums\ViewPaths\Admin\Cart;
@@ -22,6 +23,7 @@ use App\Enums\ViewPaths\Admin\DeliveryMan;
 use App\Enums\ViewPaths\Admin\DeliveryManCash;
 use App\Enums\ViewPaths\Admin\DeliverymanWithdraw;
 use App\Enums\ViewPaths\Admin\DeliveryRestriction;
+use App\Enums\ViewPaths\Admin\Department;
 use App\Enums\ViewPaths\Admin\EmailTemplate;
 use App\Enums\ViewPaths\Admin\EmergencyContact;
 use App\Enums\ViewPaths\Admin\Employee;
@@ -38,6 +40,7 @@ use App\Enums\ViewPaths\Admin\InhouseShop;
 use App\Enums\ViewPaths\Admin\InvoiceSettings;
 use App\Enums\ViewPaths\Admin\Language;
 use App\Enums\ViewPaths\Admin\Mail;
+use App\Enums\ViewPaths\Admin\MoleculeFAQ;
 use App\Enums\ViewPaths\Admin\MostDemanded;
 use App\Enums\ViewPaths\Admin\Notification;
 use App\Enums\ViewPaths\Admin\NotificationSetup;
@@ -69,6 +72,7 @@ use App\Enums\ViewPaths\Admin\StorageConnectionSettings;
 use App\Enums\ViewPaths\Admin\SubCategory;
 use App\Enums\ViewPaths\Admin\SubSubCategory;
 use App\Enums\ViewPaths\Admin\SupportTicket;
+use App\Enums\ViewPaths\Admin\Tag;
 use App\Enums\ViewPaths\Admin\ThemeSetup;
 use App\Enums\ViewPaths\Admin\Vendor;
 use App\Enums\ViewPaths\Admin\VendorRegistrationReason;
@@ -105,16 +109,20 @@ use App\Http\Controllers\Admin\POS\POSOrderController;
 use App\Http\Controllers\Admin\Product\AttributeController;
 use App\Http\Controllers\Admin\Product\BrandController;
 use App\Http\Controllers\Admin\Product\CategoryController;
+use App\Http\Controllers\Admin\Product\DepartmentController;
+use App\Http\Controllers\Admin\Product\MoleculeFAQController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Product\ReviewController;
 use App\Http\Controllers\Admin\Product\SubCategoryController;
 use App\Http\Controllers\Admin\Product\SubSubCategoryController;
+use App\Http\Controllers\Admin\Product\TagController;
 use App\Http\Controllers\Admin\ProductReportController;
 use App\Http\Controllers\Admin\ProductStockReportController;
 use App\Http\Controllers\Admin\ProductWishlistReportController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\Promotion\AllPagesBannerController;
 use App\Http\Controllers\Admin\Promotion\BannerController;
+use App\Http\Controllers\Admin\Promotion\BlogController;
 use App\Http\Controllers\Admin\Promotion\CouponController;
 use App\Http\Controllers\Admin\Promotion\DealOfTheDayController;
 use App\Http\Controllers\Admin\Promotion\FeaturedDealController;
@@ -289,6 +297,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
         });
     });
 
+    // Molecule FAQ
+    Route::group(['prefix' => 'molecule-faq', 'as' => 'molecule-faq.','middleware'=>['module:product_management']], function () {
+        Route::controller(MoleculeFAQController::class)->group(function (){
+            Route::get(MoleculeFAQ::LIST[URI], 'index')->name('view');
+            Route::post(MoleculeFAQ::STORE[URI], 'add')->name('store');
+            Route::get(MoleculeFAQ::UPDATE[URI].'/{id}', 'getUpdateView')->name('update');
+            Route::post(MoleculeFAQ::UPDATE[URI].'/{id}', 'update');
+            Route::post(MoleculeFAQ::DELETE[URI], 'delete')->name('delete');
+        });
+    });
+
+    // Department
+    Route::group(['prefix' => 'department', 'as' => 'department.','middleware'=>['module:product_management']], function () {
+        Route::controller(DepartmentController::class)->group(function (){
+            Route::get(Department::LIST[URI], 'index')->name('view');
+            Route::post(Department::STORE[URI], 'add')->name('store');
+            Route::get(Department::UPDATE[URI].'/{id}', 'getUpdateView')->name('update');
+            Route::post(Department::UPDATE[URI].'/{id}', 'update');
+            Route::post(Department::DELETE[URI], 'delete')->name('delete');
+        });
+    });
+
     // Brand
     Route::group(['prefix' => 'brand', 'as' => 'brand.','middleware'=>['module:product_management']], function () {
         Route::controller(BrandController::class)->group(function (){
@@ -300,6 +330,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post(Brand::DELETE[URI], 'delete')->name('delete');
             Route::get(Brand::EXPORT[URI], 'exportList')->name('export');
             Route::post(Brand::STATUS[URI], 'updateStatus')->name('status-update');
+        });
+    });
+
+    // Molecule
+    Route::group(['prefix' => 'tag', 'as' => 'tag.','middleware'=>['module:product_management']], function () {
+        Route::controller(TagController::class)->group(function (){
+            Route::get(Tag::LIST[URI], 'index')->name('list');
+            Route::get(Tag::ADD[URI], 'getAddView')->name('add-new');
+            Route::post(Tag::ADD[URI], 'add');
+            Route::get(Tag::UPDATE[URI].'/{id}', 'getUpdateView')->name('update');
+            Route::post(Tag::UPDATE[URI].'/{id}', 'update');
+            Route::post(Tag::DELETE[URI], 'delete')->name('delete');
+            Route::post(Tag::STATUS[URI], 'updateStatus')->name('status-update');
         });
     });
 
@@ -351,6 +394,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
             Route::post(Banner::STATUS[URI], 'updateStatus')->name('status');
             Route::get(Banner::UPDATE[URI].'/{id}', 'getUpdateView')->name('update');
             Route::post(Banner::UPDATE[URI].'/{id}', 'update');
+        });
+    });
+
+    // Blog
+    Route::group(['prefix' => 'blog', 'as' => 'blog.','middleware'=>['module:promotion_management']], function () {
+        Route::controller(BlogController::class)->group(function (){
+            Route::get(Blog::LIST[URI], 'index')->name('list');
+            Route::post(Blog::ADD[URI], 'add')->name('store');
+            Route::post(Blog::DELETE[URI], 'delete')->name('delete');
+            Route::post(Blog::STATUS[URI], 'updateStatus')->name('status');
+            Route::get(Blog::UPDATE[URI].'/{id}', 'getUpdateView')->name('update');
+            Route::post(Blog::UPDATE[URI].'/{id}', 'update');
         });
     });
 
@@ -729,6 +784,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
 
                 Route::get(Pages::PRIVACY_POLICY[URI], 'getPrivacyPolicyView')->name('privacy-policy');
                 Route::post(Pages::PRIVACY_POLICY[URI], 'updatePrivacyPolicy')->name('privacy-policy-update');
+
+                Route::get(Pages::DISCLAIMER[URI], 'getDisclaimerView')->name('disclaimer');
+                Route::post(Pages::DISCLAIMER[URI], 'updateDisclaimer')->name('disclaimer-update');
 
                 Route::get(Pages::ABOUT_US[URI], 'getAboutUsView')->name('about-us');
                 Route::post(Pages::ABOUT_US[URI], 'updateAboutUs')->name('about-update');

@@ -43,4 +43,9 @@ enum Pages
         URI => 'terms-and-condition',
         VIEW => ''
     ];
+
+    const DISCLAIMER = [
+        URI => 'disclaimer',
+        VIEW => ''
+    ];
 }

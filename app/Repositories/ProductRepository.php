@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
+use Str;
+
 use Illuminate\Support\Facades\DB;
 
 class ProductRepository implements ProductRepositoryInterface
@@ -41,14 +43,24 @@ class ProductRepository implements ProductRepositoryInterface
         }
         if (isset($tags)) {
             foreach ($tags as $value) {
-                $tag = $this->tag->firstOrNew(
-                    ['tag' => trim($value)]
-                );
-                $tag->save();
-                $tagIds[] = $tag->id;
+                $isTagExists = Tag::where('tag', $value)->first();
+                if(!$isTagExists){
+                    $tag = $this->tag->firstOrNew(
+                        ['tag' => trim($value), 'slug' => $this->getSlug($value)]
+                    );
+                    $tag->save();
+                    $tagIds[] = $tag->id;
+                } else {
+                    $tagIds[] = $isTagExists->id;
+                }
             }
         }
         $product->tags()->sync($tagIds);
+    }
+
+    public function getSlug($value): string
+    {
+        return Str::slug($value) . '-' . Str::random(6);
     }
 
     public function add(array $data): string|object

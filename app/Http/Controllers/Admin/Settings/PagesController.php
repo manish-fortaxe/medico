@@ -6,6 +6,7 @@ use App\Contracts\Repositories\BusinessSettingRepositoryInterface;
 use App\Enums\ViewPaths\Admin\Pages;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\Admin\AboutUsRequest;
+use App\Http\Requests\Admin\DisclaimerRequest;
 use App\Http\Requests\Admin\PageUpdateRequest;
 use App\Http\Requests\Admin\PrivacyPolicyRequest;
 use App\Http\Requests\Admin\TermsConditionRequest;
@@ -96,5 +97,17 @@ class PagesController extends BaseController
         return back();
     }
 
+    public function getDisclaimerView(): View
+    {
+        $disclaimer = $this->businessSettingRepo->getFirstWhere(params: ['type'=>'disclaimer']);
+        return view(Pages::DISCLAIMER[VIEW], compact('disclaimer'));
+    }
+
+    public function updateDisclaimer(DisclaimerRequest $request): RedirectResponse
+    {
+        $this->businessSettingRepo->updateWhere(params: ['type'=>'disclaimer'], data: ['value' => $request['value']]);
+        Toastr::success(translate('Disclaimer_Updated_successfully'));
+        return back();
+    }
 
 }

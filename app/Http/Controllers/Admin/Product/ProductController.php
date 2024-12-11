@@ -9,6 +9,7 @@ use App\Contracts\Repositories\CartRepositoryInterface;
 use App\Contracts\Repositories\CategoryRepositoryInterface;
 use App\Contracts\Repositories\ColorRepositoryInterface;
 use App\Contracts\Repositories\DealOfTheDayRepositoryInterface;
+use App\Contracts\Repositories\DepartmentRepositoryInterface;
 use App\Contracts\Repositories\DigitalProductVariationRepositoryInterface;
 use App\Contracts\Repositories\FlashDealProductRepositoryInterface;
 use App\Contracts\Repositories\ProductRepositoryInterface;
@@ -44,6 +45,7 @@ class ProductController extends BaseController
 
     public function __construct(
         private readonly CategoryRepositoryInterface                $categoryRepo,
+        private readonly DepartmentRepositoryInterface              $departmentRepo,
         private readonly BrandRepositoryInterface                   $brandRepo,
         private readonly ProductRepositoryInterface                 $productRepo,
         private readonly DigitalProductVariationRepositoryInterface $digitalProductVariationRepo,
@@ -85,8 +87,9 @@ class ProductController extends BaseController
         $languages = getWebConfig(name: 'pnc_language') ?? null;
         $defaultLanguage = $languages[0];
         $digitalProductFileTypes = ['audio', 'video', 'document', 'software'];
+        $departments =$this->departmentRepo->getListWhere(dataLimit:'all');
 
-        return view(Product::ADD[VIEW], compact('categories', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes'));
+        return view(Product::ADD[VIEW], compact('categories', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes','departments'));
     }
 
     public function add(ProductAddRequest $request, ProductService $service): JsonResponse|RedirectResponse
@@ -119,19 +122,15 @@ class ProductController extends BaseController
             'request_status' => $request['status'],
             'seller_id' => $request['seller_id'],
             'brand_id' => $request['brand_id'],
-            'category_id' => $request['category_id'],
-            'sub_category_id' => $request['sub_category_id'],
-            'sub_sub_category_id' => $request['sub_sub_category_id'],
+            'category_id' => $request['category_id']
         ];
 
         $products = $this->productRepo->getListWhere(orderBy: ['id' => 'desc'], searchValue: $request['searchValue'], filters: $filters, dataLimit: getWebConfig(name: WebConfigKey::PAGINATION_LIMIT));
         $sellers = $this->sellerRepo->getByStatusExcept(status: 'pending', relations: ['shop'], paginateBy: getWebConfig(name: WebConfigKey::PAGINATION_LIMIT));
         $brands = $this->brandRepo->getListWhere(filters: ['status' => 1], dataLimit: 'all');
         $categories = $this->categoryRepo->getListWhere(filters: ['position' => 0], dataLimit: 'all');
-        $subCategory = $this->categoryRepo->getFirstWhere(params: ['id' => $request['sub_category_id']]);
-        $subSubCategory = $this->categoryRepo->getFirstWhere(params: ['id' => $request['sub_sub_category_id']]);
         return view(Product::LIST[VIEW], compact('products', 'sellers', 'brands',
-            'categories', 'subCategory', 'subSubCategory', 'filters', 'type'));
+            'categories', 'filters', 'type'));
     }
 
     public function getUpdateView(string|int $id): View|RedirectResponse
@@ -152,8 +151,8 @@ class ProductController extends BaseController
         $attributes = $this->attributeRepo->getList(orderBy: ['name' => 'desc'], dataLimit: 'all');
         $defaultLanguage = $languages[0];
         $digitalProductFileTypes = ['audio', 'video', 'document', 'software'];
-
-        return view(Product::UPDATE[VIEW], compact('product', 'categories', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes'));
+        $departments =$this->departmentRepo->getListWhere(dataLimit:'all');
+        return view(Product::UPDATE[VIEW], compact('product', 'categories', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes','departments'));
     }
 
     public function update(ProductUpdateRequest $request, ProductService $service, string|int $id): JsonResponse|RedirectResponse

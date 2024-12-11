@@ -49,6 +49,10 @@ return [
     'order_complete' => 'web-views.checkout.complete',
     'products_mobile_nav_partials' => 'layouts.front-end.partials._cart',
     'products_view_page' => 'web-views.products.view',
+    'blogs_view_page' => 'web-views.blogs.view',
+    'blogs_list_page' => 'web-views.blogs.list',
+    'molecule_view_page' => 'web-views.molecule.view',
+    'molecule_list_page' => 'web-views.molecule.list',
     'products__ajax_partials' => 'web-views.products._ajax-products',
     'all_brands' => 'web-views.products.brands',
     'contacts' => 'web-views.pages.contact-us',
@@ -68,4 +72,5 @@ return [
     'digital_product_download' => 'web-views.order.digital-product-download',
     'robots_meta_content_partials' => 'web-views.partials._robotsMetaContentData',
     'product_seo_meta_content_partials' => 'web-views.partials._productSEOMetaContentData',
+    'disclaimer_page' => 'web-views.pages.disclaimer',
 ];

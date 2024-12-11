@@ -222,9 +222,9 @@ $("#customerResendVerifyOtp").click(function () {
                     new_seconds--;
                     new_counter.html(
                         minutes +
-                            ":" +
-                            (seconds < 10 ? "0" : "") +
-                            String(seconds)
+                        ":" +
+                        (seconds < 10 ? "0" : "") +
+                        String(seconds)
                     );
                     if (new_seconds > 0) {
                         setTimeout(new_tick, 1000);
@@ -278,9 +278,9 @@ $("#customerOtpVerify").click(function () {
                     newSeconds--;
                     newCounter.html(
                         minutes +
-                            ":" +
-                            (seconds < 10 ? "0" : "") +
-                            String(seconds)
+                        ":" +
+                        (seconds < 10 ? "0" : "") +
+                        String(seconds)
                     );
                     if (newSeconds > 0) {
                         setTimeout(new_tick, 1000);
@@ -624,7 +624,7 @@ $("#customer-register-form").on("submit", function (e) {
                 window.location.href = response.redirect_url;
             }
         },
-        error: function () {},
+        error: function () { },
         complete: function () {
             $("#loading").removeClass("d-grid");
         },
@@ -937,8 +937,8 @@ function removeWishlist(productId, modalId) {
                         .empty()
                         .append(
                             `<h6 class="text-muted text-center">` +
-                                messageNoDataFound +
-                                `</h6>`
+                            messageNoDataFound +
+                            `</h6>`
                         );
                 } else {
                     let pageValue = wishlistPaginatedPage.val();
@@ -1138,13 +1138,15 @@ function commonFunctionalityForProductView() {
 commonFunctionalityForProductView();
 
 function checkoutFromCartList() {
-    let orderNote = $("#order_note").val();
+
+    const formData = new FormData($("#prescription-form")[0]);
+
     $.post({
         url: $("#route-order-note").data("url"),
-        data: {
-            _token: $('meta[name="_token"]').attr("content"),
-            order_note: orderNote,
-        },
+        data: formData,
+        method: 'POST',
+        processData: false,
+        contentType: false,
         beforeSend: function () {
             $("#loading").show();
         },
@@ -1560,8 +1562,8 @@ function updateCartQuantity(cart_id, product_id, action, event) {
                 $("#message-minimum-order-quantity-cannot-less-than").data(
                     "text"
                 ) +
-                    " " +
-                    min_value
+                " " +
+                min_value
             );
             cart_quantity_of.val(min_value);
             updateCartQuantity(cart_id, product_id, action, event);
@@ -1584,11 +1586,11 @@ function updateCartQuantity(cart_id, product_id, action, event) {
                     $('.in_cart_key[name="key"]').val(response.in_cart_key);
                     response["qty"] <= 1
                         ? $(`.quantity__minus${cart_id}`).html(
-                              '<i class="tio-delete-outlined text-danger fs-10"></i>'
-                          )
+                            '<i class="tio-delete-outlined text-danger fs-10"></i>'
+                        )
                         : $(`.quantity__minus${cart_id}`).html(
-                              '<i class="tio-remove fs-10"></i>'
-                          );
+                            '<i class="tio-remove fs-10"></i>'
+                        );
 
                     $(`.cartQuantity${cart_id}`).val(response["qty"]);
                     $(`.cartQuantity${cart_id}`).html(response["qty"]);
@@ -1772,7 +1774,7 @@ function updateFlashDealProgressBar() {
             ((current_time_stamp - start_date) / (endTime - start_date)) * 100;
         const progress_bar = document.querySelector(".flash-deal-progress-bar");
         progress_bar.style.width = time_progress + "%";
-    } catch (e) {}
+    } catch (e) { }
 }
 
 $(".image-preview-before-upload").on("change", function () {
@@ -1840,13 +1842,13 @@ function shareOnSocialMedia() {
             "https://" + social + encodeURIComponent(url),
             "Popup",
             "toolbar=0,status=0,width=" +
-                width +
-                ",height=" +
-                height +
-                ",left=" +
-                left +
-                ",top=" +
-                top
+            width +
+            ",height=" +
+            height +
+            ",left=" +
+            left +
+            ",top=" +
+            top
         );
     });
 }
@@ -2052,7 +2054,7 @@ $(".footer-top-slider").owlCarousel({
         },
     },
 });
-function  sameHeight(){
+function sameHeight() {
     setEqualHeight(document.querySelectorAll('.footer-slider-container .footer-slider .owl-item'))
     setEqualHeight(document.querySelectorAll('.footer-top-slider .owl-item'))
 }

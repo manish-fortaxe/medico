@@ -16,8 +16,8 @@ class Payment
     private $attribute;
     private $attribute_id;
     private $payment_platform;
-
-    public function __construct($success_hook, $failure_hook, $currency_code, $payment_method, $payment_platform, $payer_id = null, $receiver_id = null, $additional_data = [], $payment_amount = 0, $external_redirect_link = null, $attribute = null, $attribute_id = null)
+    private $prescription_id;
+    public function __construct($success_hook, $failure_hook, $currency_code, $payment_method, $payment_platform, $payer_id = null, $receiver_id = null, $additional_data = [], $payment_amount = 0, $external_redirect_link = null, $attribute = null, $attribute_id = null, $prescription_id = null)
     {
         $this->success_hook = $success_hook;
         $this->failure_hook = $failure_hook;
@@ -31,6 +31,7 @@ class Payment
         $this->attribute = $attribute;
         $this->attribute_id = $attribute_id;
         $this->payment_platform = $payment_platform;
+        $this->prescription_id = $prescription_id;
     }
 
     public function getSuccessHook()
@@ -91,5 +92,9 @@ class Payment
     public function getPaymentPlatForm()
     {
         return $this->payment_platform;
+    }
+    public function getPriscriptionId()
+    {
+        return $this->prescription_id;
     }
 }

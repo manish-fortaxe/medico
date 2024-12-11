@@ -1,13 +1,13 @@
 @extends('layouts.back-end.app')
 
-@section('title', translate('brand_List'))
+@section('title', translate('manufacturer_List'))
 
 @section('content')
     <div class="content container-fluid">
         <div class="mb-3">
             <h2 class="h1 mb-0 d-flex gap-2">
                 <img width="20" src="{{ dynamicAsset(path: 'public/assets/back-end/img/brand.png') }}" alt="">
-                {{ translate('brand_List') }}
+                {{ translate('manufacturer_List') }}
                 <span class="badge badge-soft-dark radius-50 fz-14">{{ $brands->total() }}</span>
             </h2>
         </div>
@@ -55,7 +55,7 @@
                                 <thead class="thead-light thead-50 text-capitalize">
                                 <tr>
                                     <th>{{ translate('SL') }}</th>
-                                    <th>{{ translate('brand_Logo') }}</th>
+                                    <th>{{ translate('manufacturer_Logo') }}</th>
                                     <th class="max-width-100px">{{ translate('name') }}</th>
                                     <th class="text-center">{{ translate('total_Product') }}</th>
                                     <th class="text-center">{{ translate('total_Order') }}</th>

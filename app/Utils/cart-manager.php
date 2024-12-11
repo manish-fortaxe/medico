@@ -93,6 +93,16 @@ class CartManager
             ->toArray();
     }
 
+    public static function get_prescription_id($groupId = null)
+    {
+        $cart = Cart::where('cart_group_id', $groupId)->first();
+        if($cart){
+            return $cart->id;
+        } else {
+            return null;
+        }
+    }
+
     public static function get_shipping_cost($groupId = null, $type = null)
     {
         $cost = 0;

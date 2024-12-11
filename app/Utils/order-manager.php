@@ -29,6 +29,7 @@ use App\Traits\CommonTrait;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 
@@ -444,6 +445,7 @@ class OrderManager
 
     public static function generate_order($data)
     {
+        Log::info('order '.json_encode($data));
         $req = array_key_exists('request', $data) ? $data['request'] : null;
         $user = Helpers::get_customer($req);
 
@@ -591,7 +593,8 @@ class OrderManager
             'shipping_type' => $shipping_type,
             'created_at' => now(),
             'updated_at' => now(),
-            'order_note' => $order_note
+            'order_note' => $order_note,
+            'prescription_id' => CartManager::get_prescription_id(groupId: $data['cart_group_id'])
         ];
 
         if($data['payment_method'] == 'offline_payment')
