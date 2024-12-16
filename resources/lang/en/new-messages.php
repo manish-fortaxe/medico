@@ -8461,4 +8461,9 @@ return [
 	"manufacturer_List" => "Manufacturer List",
 	"manufacturer_Logo" => "Manufacturer Logo",
 	"manufacturer_Update" => "Manufacturer Update",
+	"super_Speciality" => "Super Speciality",
+	"department_updated_successfully" => "Department updated successfully",
+	"speciality_Medicine" => "Speciality Medicine",
+	"speciality_Medicines" => "Speciality Medicines",
+	"Find_your_favourite_categories_and_products" => "Find your favourite categories and products",
 ];

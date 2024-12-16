@@ -34,8 +34,8 @@
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1280px;
-    --font-family-sans-serif: "Open Sans", sans-serif;
-    --font-family-monospace: "Open Sans", sans-serif;
+    --font-family-sans-serif: "Helvetica", sans-serif;
+    --font-family-monospace: "Helvetica", sans-serif;
 }
 
 *,
@@ -13516,7 +13516,7 @@ label:not(.form-check-label):not(.custom-control-label):not(
     animation: fadeInUp 0.3s;
     -webkit-animation: fadeInUp 0.3s;
     -moz-animation: fadeInUp 0.3s;
-    
+
 }
 
 @media (max-width: 767.98px) {

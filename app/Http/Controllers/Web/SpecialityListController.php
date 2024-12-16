@@ -6,7 +6,9 @@ use App\Utils\CategoryManager;
 use App\Utils\Helpers;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Department;
 use App\Models\MoleculeFAQ;
+use App\Models\Product;
 use App\Models\Tag;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\View\View;
@@ -32,25 +34,23 @@ class SpecialityListController extends Controller
 
     public function default_theme($request): View|JsonResponse|Redirector|RedirectResponse
     {
-        $molecules = Tag::get();
-
-        $groupedMolecules = $molecules->groupBy(function ($molecule) {
-            return strtoupper(substr($molecule->tag, 0, 1)); // Group by the first letter (uppercase)
-        });
-
-        // Sort groups alphabetically
-        $groupedMolecules = $groupedMolecules->sortKeys();
-
+        if($request->type){
+            $selected_department = Department::where('slug', $request->type)->first();
+        }
+        $departments = Department::get();
+        $products = Product::where('department_id', $selected_department->id ?? 1)->paginate(10);
         return view(VIEW_FILE_NAMES['speciality_list_page'], [
-            'groupedMolecules' => $groupedMolecules,
+            'departments' => $departments,
+            'products' => $products
         ]);
     }
 
     function singleSpeciality($slug)
     {
-        $speciality = Tag::where('slug',$slug)->first();
+        $department = Department::where('slug', $slug)->first();
+        $products = Product::where('department_id',$department->id)->paginate(20);
         return view(VIEW_FILE_NAMES['speciality_view_page'], [
-            'speciality' => $speciality
+            'products' => $products
         ]);
     }
 

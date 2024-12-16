@@ -671,18 +671,16 @@
         @endif
 
 
-        <div class="container">
+        {{-- <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <h2>Why Our Customers Love Us?</b></h2>
-                        <!-- Carousel indicators -->
                         <ol class="carousel-indicators">
                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                             <li data-target="#myCarousel" data-slide-to="1"></li>
                             <li data-target="#myCarousel" data-slide-to="2"></li>
                         </ol>
-                        <!-- Wrapper for carousel items -->
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="row">
@@ -695,8 +693,6 @@
                                             <img src="https://lh3.googleusercontent.com/a-/ALV-UjUMUSbIykBAuoFvyfd-oB5bO4EhjeDILEwi7Cwuk4yQp0524C-4=s120-c-rp-mo-ba5-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
-                                                    {{-- <div class="name"><b>Paula Wilson</b></div>
-                                                    <div class="details">Media Analyst / SkyNet</div> --}}
                                                     <div class="star-rating">
                                                         <ul class="list-inline">
                                                             <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -718,8 +714,6 @@
                                             <img src="https://lh3.googleusercontent.com/a-/ALV-UjWanyEGEznM3Ue_1P-hjVCVPsAcTdvhNopNKYxOaHXVzLWS5Fp7=s120-c-rp-mo-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
-                                                    {{-- <div class="name"><b>Antonio Moreno</b></div>
-                                                    <div class="details">Web Developer / SoftBee</div> --}}
                                                     <div class="star-rating">
                                                         <ul class="list-inline">
                                                             <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -797,8 +791,6 @@
                                             <img src="https://lh3.googleusercontent.com/a-/ALV-UjUMUSbIykBAuoFvyfd-oB5bO4EhjeDILEwi7Cwuk4yQp0524C-4=s120-c-rp-mo-ba5-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
-                                                    {{-- <div class="name"><b>Martin Sommer</b></div>
-                                                    <div class="details">SEO Analyst / RealSearch</div> --}}
                                                     <div class="star-rating">
                                                         <ul class="list-inline">
                                                             <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -841,7 +833,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Carousel controls -->
                         <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
                             <i class="fa fa-chevron-left"></i>
                         </a>
@@ -851,9 +842,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="container mt-3 mb-3">
+        {{-- <div class="container mt-3 mb-3">
             <div class="row text-center">
                 <h1>What We Do?</h1>
             </div>
@@ -901,7 +892,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="container">
             <div class="row">

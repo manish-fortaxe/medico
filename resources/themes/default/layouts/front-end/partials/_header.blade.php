@@ -315,6 +315,45 @@
                             <a class="nav-link" href="{{route('home')}}">{{ translate('home')}}</a>
                         </li>
 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#"
+                                data-toggle="dropdown">{{ translate('speciality_Medicines') }}</a>
+                            <ul class="text-align-direction dropdown-menu __dropdown-menu-sizing dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} scroll-bar">
+                                        <li class="__inline-17">
+                                            <div>
+                                                <a class="dropdown-item"
+                                                    href="{{route('categories')}}">
+                                                    By Condition
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="__inline-17">
+                                            <div>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('speciality') }}">
+                                                    By Super Speciality
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="__inline-17">
+                                            <div>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('molecules') }}">
+                                                    By Molecules
+                                                </a>
+                                            </div>
+                                        </li>
+                                        {{-- <li class="__inline-17">
+                                            <div>
+                                                <a class="dropdown-item"
+                                                    href="#">
+                                                    All Medicines
+                                                </a>
+                                            </div>
+                                        </li> --}}
+                            </ul>
+                        </li>
+
                         {{-- @if(getWebConfig(name: 'product_brand'))
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#"
