@@ -313,6 +313,11 @@ class Product extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    public function department()
+    {
+        return $this->belongs(Department::class, 'department_id', 'id');
+    }
+
     //old relation: flash_deal_product
     public function flashDealProducts(): HasMany
     {

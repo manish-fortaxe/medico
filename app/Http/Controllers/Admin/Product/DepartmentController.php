@@ -90,7 +90,7 @@ class DepartmentController extends BaseController
 
     public function getSlug(object $request): string
     {
-        return Str::slug($request['name']) . '-' . Str::random(6);
+        return Str::slug($request['name']);
     }
 
 }

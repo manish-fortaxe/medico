@@ -819,19 +819,12 @@
                     <figure class="table table-responsive">
                         <table class="table table-responsive">
                             <tbody>
-                                <tr><td><p style="text-align: justify;">Molecule name:&nbsp;<strong> &nbsp;Curcumin&nbsp;&nbsp;&nbsp;</strong></p></td><td><p style="text-align: justify;">Therapeutic class: <strong>Dietary Supplements</strong></p></td>
+                                <tr><td><p style="text-align: justify;">Molecule name:&nbsp;<strong> &nbsp;{!! salt_composition($product->id) !!}&nbsp;</strong></p></td><td><p style="text-align: justify;">Therapeutic class: <strong>{{ isset($product->department) ? $product->department->name : 'N/A' }}</strong></p></td>
                                 </tr>
                                 <tr>
-                                    <td><p style="text-align: justify;">Pharmacological class:<strong> Bioactive compound</strong></p></td>
+                                    <td><p style="text-align: justify;">Pharmacological class:<strong> N/A</strong></p></td>
                                     <td>
-                                        <p>Indications:<strong>&nbsp;</strong></p>
-                                        <p><strong>1. Arthritis</strong></p>
-                                        <p><strong>1. Arthritis</strong></p>
-                                        <p><strong>1. Arthritis</strong></p>
-                                        <p><strong>1. Arthritis</strong></p>
-                                        <p><strong>1. Arthritis</strong></p>
-                                        <p><strong>1. Arthritis</strong></p>
-                                        <p><strong>1. Arthritis</strong></p>
+                                        {!! product_indication($product->id) !!}
                                     </td>
                                 </tr>
                                 </tbody>

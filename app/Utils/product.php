@@ -155,3 +155,23 @@ if (!function_exists('salt_composition')) {
     }
 }
 
+if (!function_exists('product_indication')) {
+    function product_indication($id)
+    {
+        $html = '<p>Indications:<strong>&nbsp;</strong></p>'; // Initial heading
+        $product = Product::find($id);
+
+        if ($product && !empty($product->indications)) {
+            $indications = explode(',', $product->indications); // Split indications into an array
+            foreach ($indications as $index => $indication) {
+                $html .= '<p><strong>' . ($index + 1) . '. ' . e(trim($indication)) . '</strong></p>';
+            }
+        } else {
+            $html .= '<p><strong>No indications available</strong></p>'; // Fallback if no indications exist
+        }
+
+        return $html;
+    }
+}
+
+
