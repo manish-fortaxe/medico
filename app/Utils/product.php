@@ -161,8 +161,8 @@ if (!function_exists('product_indication')) {
         $html = '<p>Indications:<strong>&nbsp;</strong></p>'; // Initial heading
         $product = Product::find($id);
 
-        if ($product && !empty($product->indications)) {
-            $indications = explode(',', $product->indications); // Split indications into an array
+        if ($product && !empty($product->indication)) {
+            $indications = explode(',', $product->indication); // Split indications into an array
             foreach ($indications as $index => $indication) {
                 $html .= '<p><strong>' . ($index + 1) . '. ' . e(trim($indication)) . '</strong></p>';
             }
