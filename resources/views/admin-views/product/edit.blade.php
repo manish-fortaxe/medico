@@ -192,7 +192,7 @@
                                        value="{{request('product-gallery') ? ' ':$product->code}}" placeholder="{{ translate('ex').': YU62TN'}}" required>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                        <div class="col-md-6 col-lg-4 col-xl-2 physical_product_show">
                             <div class="form-group">
                                 <label class="title-color">{{ translate('unit') }}</label>
                                 <select
