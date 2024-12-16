@@ -103,7 +103,7 @@
                                             disabled>{{ translate('select_Department') }}</option>
                                         @foreach ($departments as $department)
                                             <option value="{{ $department['id'] }}"
-                                                {{ old('name') == $department['id'] ? 'selected' : '' }}>
+                                                {{ $product->department_id == $department['id'] ? 'selected' : '' }}>
                                                 {{ $department['name'] }}
                                             </option>
                                         @endforeach
@@ -203,6 +203,12 @@
                                             value={{ $unit}} {{ $product->unit==$unit ? 'selected' : ''}}>{{ $unit}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-4 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('box_Contains') }}</label>
+                                <input type="text" name="contains" class="form-control" value="{{ $product->contains ?? '' }}" />
                             </div>
                         </div>
                         <div class="col-md-12">
