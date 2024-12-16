@@ -688,16 +688,15 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="testimonial">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor,
-                                                varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel,
-                                                semper malesuada ante.</p>
+                                            <p>Delivery for a medicine from Chennai to Mumbai within 24 hours
+                                            </p>
                                         </div>
                                         <div class="media">
                                             <img src="https://lh3.googleusercontent.com/a-/ALV-UjUMUSbIykBAuoFvyfd-oB5bO4EhjeDILEwi7Cwuk4yQp0524C-4=s120-c-rp-mo-ba5-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
-                                                    <div class="name"><b>Paula Wilson</b></div>
-                                                    <div class="details">Media Analyst / SkyNet</div>
+                                                    {{-- <div class="name"><b>Paula Wilson</b></div>
+                                                    <div class="details">Media Analyst / SkyNet</div> --}}
                                                     <div class="star-rating">
                                                         <ul class="list-inline">
                                                             <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -713,16 +712,14 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="testimonial">
-                                            <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt.
-                                                Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat
-                                                faucibus quam.</p>
+                                            <p>Quick Customer support system, User Friendly Payment Interface,  Door to door   delivery</p>
                                         </div>
                                         <div class="media">
                                             <img src="https://lh3.googleusercontent.com/a-/ALV-UjWanyEGEznM3Ue_1P-hjVCVPsAcTdvhNopNKYxOaHXVzLWS5Fp7=s120-c-rp-mo-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
-                                                    <div class="name"><b>Antonio Moreno</b></div>
-                                                    <div class="details">Web Developer / SoftBee</div>
+                                                    {{-- <div class="name"><b>Antonio Moreno</b></div>
+                                                    <div class="details">Web Developer / SoftBee</div> --}}
                                                     <div class="star-rating">
                                                         <ul class="list-inline">
                                                             <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -742,9 +739,8 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="testimonial">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor,
-                                                varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel,
-                                                semper malesuada ante.</p>
+                                            <p>one of the best place to order online
+                                                very supportive customer services all members are very humble and quick to respond</p>
                                         </div>
                                         <div class="media">
                                             <img src="https://lh3.googleusercontent.com/a-/ALV-UjWanyEGEznM3Ue_1P-hjVCVPsAcTdvhNopNKYxOaHXVzLWS5Fp7=s120-c-rp-mo-br100" class="mr-3" alt="">
@@ -767,9 +763,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="testimonial">
-                                            <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt.
-                                                Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat
-                                                faucibus quam.</p>
+                                            <p>I got my delivery very soon and perfectly.. and guidance from team also appreciatble..</p>
                                         </div>
                                         <div class="media">
                                             <img src="https://lh3.googleusercontent.com/a-/ALV-UjUMUSbIykBAuoFvyfd-oB5bO4EhjeDILEwi7Cwuk4yQp0524C-4=s120-c-rp-mo-ba5-br100" class="mr-3" alt="">
@@ -796,16 +790,15 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="testimonial">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor,
-                                                varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel,
-                                                semper malesuada ante.</p>
+                                            <p>one of the best place to order online
+                                                very supportive customer services all members are very humble and quick to respond</p>
                                         </div>
                                         <div class="media">
                                             <img src="https://lh3.googleusercontent.com/a-/ALV-UjUMUSbIykBAuoFvyfd-oB5bO4EhjeDILEwi7Cwuk4yQp0524C-4=s120-c-rp-mo-ba5-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
-                                                    <div class="name"><b>Martin Sommer</b></div>
-                                                    <div class="details">SEO Analyst / RealSearch</div>
+                                                    {{-- <div class="name"><b>Martin Sommer</b></div>
+                                                    <div class="details">SEO Analyst / RealSearch</div> --}}
                                                     <div class="star-rating">
                                                         <ul class="list-inline">
                                                             <li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -821,9 +814,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="testimonial">
-                                            <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt.
-                                                Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat
-                                                faucibus quam.</p>
+                                            <p>one of the best place to order online
+                                                very supportive customer services all members are very humble and quick to respond</p>
                                         </div>
                                         <div class="media">
                                             <div class="media-left d-flex mr-3">

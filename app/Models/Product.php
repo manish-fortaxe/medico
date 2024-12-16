@@ -315,7 +315,7 @@ class Product extends Model
 
     public function department()
     {
-        return $this->belongs(Department::class, 'department_id', 'id');
+        return $this->belongsTo(Department::class, 'department_id', 'id');
     }
 
     //old relation: flash_deal_product
