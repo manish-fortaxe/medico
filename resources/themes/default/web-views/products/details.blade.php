@@ -821,6 +821,7 @@
                             <tbody>
                                 <tr><td><p style="text-align: justify;">Molecule name:&nbsp;<strong> &nbsp;{!! salt_composition($product->id) !!}&nbsp;</strong></p></td><td><p style="text-align: justify;">Therapeutic class: <strong>{{ isset($product->department) ? $product->department->name : 'N/A' }}</strong></p></td>
                                 </tr>
+                                
                                 <tr>
                                     <td><p style="text-align: justify;">Pharmacological class:<strong> N/A</strong></p></td>
                                     <td>
