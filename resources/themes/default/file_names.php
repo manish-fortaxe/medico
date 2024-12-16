@@ -53,6 +53,8 @@ return [
     'blogs_list_page' => 'web-views.blogs.list',
     'molecule_view_page' => 'web-views.molecule.view',
     'molecule_list_page' => 'web-views.molecule.list',
+    'spiciality_view_page' => 'web-views.speciality.view',
+    'speciality_list_page' => 'web-views.speciality.list',
     'products__ajax_partials' => 'web-views.products._ajax-products',
     'all_brands' => 'web-views.products.brands',
     'contacts' => 'web-views.pages.contact-us',

@@ -38,6 +38,7 @@ use App\Http\Controllers\Payment_Methods\BkashPaymentController;
 use App\Http\Controllers\Payment_Methods\PaystackController;
 use App\Http\Controllers\Web\BlogListController;
 use App\Http\Controllers\Web\MoleculeListController;
+use App\Http\Controllers\Web\SpecialityListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -140,6 +141,11 @@ Route::group(['namespace' => 'Web', 'middleware' => ['maintenance_mode', 'guestC
     Route::controller(MoleculeListController::class)->group(function () {
         Route::get('molecules', 'molecules')->name('molecules');
         Route::get('molecule/{slug}', 'singleMolecule')->name('single-molecule');
+    });
+
+    Route::controller(SpecialityListController::class)->group(function () {
+        Route::get('speciality', 'speciality')->name('speciality');
+        Route::get('speciality/{slug}', 'singleSpeciality')->name('single-speciality');
     });
 
     Route::post('ajax-filter-products', 'ShopViewController@ajax_filter_products')->name('ajax-filter-products'); // Theme fashion, ALl purpose

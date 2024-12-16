@@ -223,13 +223,13 @@
                         <div class="col-md-6 col-lg-4 col-xl-6 physical_product_show">
                             <div class="form-group">
                                 <label class="title-color">{{ translate('reference') }}</label>
-                                <textarea name="reference" class="form-control"> </textarea>
+                                <textarea name="reference" class="form-control"> {{ $product->disclaimer }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4 col-xl-6 physical_product_show">
                             <div class="form-group">
                                 <label class="title-color">{{ translate('disclaimer') }}</label>
-                                <textarea name="disclaimer" class="form-control"> </textarea>
+                                <textarea name="disclaimer" class="form-control">{{ $product->disclaimer }} </textarea>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4 col-xl-12 physical_product_show">

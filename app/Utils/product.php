@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Product;
+use App\Models\ProductTag;
 use App\Models\Review;
+use App\Models\Tag;
 
 if (!function_exists('getOverallRating')) {
     function getOverallRating(object|array $reviews): array
@@ -131,3 +133,25 @@ if (!function_exists('getAdminProductsCount')) {
         };
     }
 }
+
+if (!function_exists('salt_composition')) {
+    function salt_composition($id)
+    {
+        $html = '';
+        $tags = ProductTag::where('product_id', $id)->get();
+
+        foreach ($tags as $index => $tag) {
+            $molecule = Tag::find($tag->tag_id);
+            if ($molecule) {
+                $html .= '<a target="_blank" href="' . route('single-molecule', $molecule->slug) . '">' . $molecule->tag . '</a>';
+                // Add a comma after each tag except the last one
+                if ($index < $tags->count() - 1) {
+                    $html .= ', ';
+                }
+            }
+        }
+
+        return $html;
+    }
+}
+

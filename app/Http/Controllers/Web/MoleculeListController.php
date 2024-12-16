@@ -32,30 +32,17 @@ class MoleculeListController extends Controller
 
     public function default_theme($request): View|JsonResponse|Redirector|RedirectResponse
     {
-        $categories = CategoryManager::getCategoriesWithCountingAndPriorityWiseSorting();
-        $blogsSortBy = $request->get('sort_by');
+        $molecules = Tag::get();
 
-        $blogsListData = Blog::get();
+        $groupedMolecules = $molecules->groupBy(function ($molecule) {
+            return strtoupper(substr($molecule->tag, 0, 1)); // Group by the first letter (uppercase)
+        });
 
-        if ($blogsSortBy) {
-            if ($blogsSortBy == 'latest') {
-                $blogsListData = $blogsListData->sortByDesc('id');
-            } elseif ($blogsSortBy == 'low-high') {
-                $blogsListData = $blogsListData->sortBy('unit_price');
-            } elseif ($blogsSortBy == 'high-low') {
-                $blogsListData = $blogsListData->sortByDesc('unit_price');
-            } elseif ($blogsSortBy == 'a-z') {
-                $blogsListData = $blogsListData->sortBy('name');
-            } elseif ($blogsSortBy == 'z-a') {
-                $blogsListData = $blogsListData->sortByDesc('name');
-            }
-        }
+        // Sort groups alphabetically
+        $groupedMolecules = $groupedMolecules->sortKeys();
 
-        $blogs = $blogsListData->paginate(20);
-
-        return view(VIEW_FILE_NAMES['blogs_list_page'], [
-            'blogs' => $blogs,
-            'categories' => $categories,
+        return view(VIEW_FILE_NAMES['molecule_list_page'], [
+            'groupedMolecules' => $groupedMolecules,
         ]);
     }
 

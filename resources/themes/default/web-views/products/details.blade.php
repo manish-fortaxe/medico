@@ -255,6 +255,13 @@
                                     @endforeach
 
                                     <div class="mt-3">
+                                        @isset($product->tags)
+                                        <p><b>Salt Composition :</b> {!! salt_composition($product->id) !!}</p>
+                                        @endisset
+                                        @isset($product->brand)<p><b>Manufacturer :</b> {{ $product->brand->name }}</p>@endisset
+                                        @isset($product->origin)<p><b>Origin of Medicine :</b> {{ $product->origin }}</p>@endisset
+                                    </div>
+                                    <div class="mt-3">
                                         <div class="product-quantity d-flex flex-column __gap-15">
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="product-description-label text-dark font-bold mt-0">
@@ -301,6 +308,7 @@
                                                     </small>
                                                 </div>
                                             </div>
+                                                @isset($product->contains)<span>{{ $product->contains }}</span>@endisset
                                         </div>
                                     </div>
 
@@ -804,6 +812,52 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="card col-lg-9 col-12 p-3">
+                    <h5>Fact Box of {{ $product->name }}</h5>
+                    <figure class="table table-responsive">
+                        <table class="table table-responsive">
+                            <tbody>
+                                <tr><td><p style="text-align: justify;">Molecule name:&nbsp;<strong> &nbsp;Curcumin&nbsp;&nbsp;&nbsp;</strong></p></td><td><p style="text-align: justify;">Therapeutic class: <strong>Dietary Supplements</strong></p></td>
+                                </tr>
+                                <tr>
+                                    <td><p style="text-align: justify;">Pharmacological class:<strong> Bioactive compound</strong></p></td>
+                                    <td>
+                                        <p>Indications:<strong>&nbsp;</strong></p>
+                                        <p><strong>1. Arthritis</strong></p>
+                                        <p><strong>1. Arthritis</strong></p>
+                                        <p><strong>1. Arthritis</strong></p>
+                                        <p><strong>1. Arthritis</strong></p>
+                                        <p><strong>1. Arthritis</strong></p>
+                                        <p><strong>1. Arthritis</strong></p>
+                                        <p><strong>1. Arthritis</strong></p>
+                                    </td>
+                                </tr>
+                                </tbody>
+                        </table>
+                    </figure>
+                </div>
+            </div>
+
+            @isset($product->reference)
+            <div class="row">
+                <div class="card col-lg-9 col-12 p-3">
+                    <h5>References</h5>
+                    <p>{{ $product->reference }}</p>
+                </div>
+            </div>
+            @endif
+
+            @isset($product->disclaimer)
+            <div class="row">
+                <div class="card col-lg-9 col-12 p-3">
+                    <h5>Disclaimer</h5>
+                    <p>{{ $product->disclaimer }}</p>
+                </div>
+            </div>
+            @endisset
+
         </div>
 
         <div class="bottom-sticky bg-white d-sm-none">

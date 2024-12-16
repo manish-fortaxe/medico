@@ -1474,4 +1474,3 @@ if (!function_exists('currency_converter')) {
     }
 }
 
-

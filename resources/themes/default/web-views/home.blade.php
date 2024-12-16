@@ -693,7 +693,7 @@
                                                 semper malesuada ante.</p>
                                         </div>
                                         <div class="media">
-                                            <img src="/examples/images/clients/1.jpg" class="mr-3" alt="">
+                                            <img src="https://lh3.googleusercontent.com/a-/ALV-UjUMUSbIykBAuoFvyfd-oB5bO4EhjeDILEwi7Cwuk4yQp0524C-4=s120-c-rp-mo-ba5-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
                                                     <div class="name"><b>Paula Wilson</b></div>
@@ -718,7 +718,7 @@
                                                 faucibus quam.</p>
                                         </div>
                                         <div class="media">
-                                            <img src="/examples/images/clients/2.jpg" class="mr-3" alt="">
+                                            <img src="https://lh3.googleusercontent.com/a-/ALV-UjWanyEGEznM3Ue_1P-hjVCVPsAcTdvhNopNKYxOaHXVzLWS5Fp7=s120-c-rp-mo-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
                                                     <div class="name"><b>Antonio Moreno</b></div>
@@ -747,7 +747,7 @@
                                                 semper malesuada ante.</p>
                                         </div>
                                         <div class="media">
-                                            <img src="/examples/images/clients/3.jpg" class="mr-3" alt="">
+                                            <img src="https://lh3.googleusercontent.com/a-/ALV-UjWanyEGEznM3Ue_1P-hjVCVPsAcTdvhNopNKYxOaHXVzLWS5Fp7=s120-c-rp-mo-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
                                                     <div class="name"><b>Michael Holz</b></div>
@@ -772,7 +772,7 @@
                                                 faucibus quam.</p>
                                         </div>
                                         <div class="media">
-                                            <img src="/examples/images/clients/4.jpg" class="mr-3" alt="">
+                                            <img src="https://lh3.googleusercontent.com/a-/ALV-UjUMUSbIykBAuoFvyfd-oB5bO4EhjeDILEwi7Cwuk4yQp0524C-4=s120-c-rp-mo-ba5-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
                                                     <div class="name"><b>Mary Saveley</b></div>
@@ -801,7 +801,7 @@
                                                 semper malesuada ante.</p>
                                         </div>
                                         <div class="media">
-                                            <img src="/examples/images/clients/5.jpg" class="mr-3" alt="">
+                                            <img src="https://lh3.googleusercontent.com/a-/ALV-UjUMUSbIykBAuoFvyfd-oB5bO4EhjeDILEwi7Cwuk4yQp0524C-4=s120-c-rp-mo-ba5-br100" class="mr-3" alt="">
                                             <div class="media-body">
                                                 <div class="overview">
                                                     <div class="name"><b>Martin Sommer</b></div>
@@ -827,7 +827,7 @@
                                         </div>
                                         <div class="media">
                                             <div class="media-left d-flex mr-3">
-                                                <img src="/examples/images/clients/6.jpg" alt="">
+                                                <img src="https://lh3.googleusercontent.com/a/ACg8ocJ-4X4XI18GjHXHUgGKk8PCe9VT28-ySb6-x8_4fJqSfEGi-w=s120-c-rp-mo-br100" alt="">
                                             </div>
                                             <div class="media-body">
                                                 <div class="overview">
@@ -978,7 +978,7 @@
         <div class="container mt-3 mb-5">
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="mb-5">Why Our Customers Love Us ?</h2>
+                    <h2 class="mb-5">Testimonials</h2>
 
                     <div id="myCarousel" class="carousel1 slide" data-ride="carousel">
                         <!-- Carousel indicators -->
