@@ -796,7 +796,7 @@ a {
 }
 
 .page-footer {
-    background: #183f56;
+    background: var(--base);
 }
 
 .page-footer hr {

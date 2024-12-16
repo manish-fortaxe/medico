@@ -449,8 +449,8 @@
             }
 
             .counter {
-                color: #009CB5;
-                background: #009CB5;
+                color: var(--base);
+                background: var(--base);
                 font-family: 'Hind', sans-serif;
                 text-align: center;
                 width: 200px;
@@ -478,7 +478,7 @@
 
             .counter .counter-icon {
                 color: #fff;
-                background: #009CB5;
+                background: var(--base);
                 font-size: 45px;
                 width: 80px;
                 height: 80px;
