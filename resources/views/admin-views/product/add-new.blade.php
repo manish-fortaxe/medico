@@ -200,6 +200,38 @@
                                 <input type="text" name="contains" class="form-control" />
                             </div>
                         </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('HSN_CODE') }}</label>
+                                <input type="text" name="hsn_code" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('cold_Chain') }}</label>
+                                <input type="text" name="cold_chain" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('Author') }}</label>
+                                <select class="js-select2-custom form-control select2" name="author_id[]" multiple>
+                                    <option value="" selected disabled>Select Author</option>
+                                    <option value="1">SpecialMeds</option>
+                                    <option value="2">Mrmed</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('molecules') }}</label>
+                                <select class="js-select2-custom form-control" name="molecule_id[]" multiple>
+                                    <option value="" selected disabled>Select Molecules</option>
+                                    <option value="1">SpecialMeds</option>
+                                    <option value="2">Mrmed</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="title-color d-flex align-items-center gap-2">
@@ -230,6 +262,12 @@
                             <div class="form-group">
                                 <label class="title-color">{{ translate('indication') }} ({{ translate('please_separate_with_comma') }})</label>
                                 <input type="text" class="form-control" name="indication" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-12 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('PAP_Scheme') }}</label>
+                                <textarea name="pap_description" class="form-control"> </textarea>
                             </div>
                         </div>
                     </div>

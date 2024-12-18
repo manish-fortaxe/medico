@@ -71,6 +71,8 @@ class Product extends Model
         'reference',
         'disclaimer',
         'indication',
+        'pap_description',
+        'hsn_code',
         'is_prescription',
         'brand_id',
         'unit',
@@ -301,6 +303,26 @@ class Product extends Model
     public function wishList(): HasMany
     {
         return $this->hasMany(Wishlist::class, 'product_id');
+    }
+
+    public function molecules()
+    {
+        return $this->belongsToMany(
+            Molecule::class,
+            'product_molecules',
+            'product_id',
+            'molecule_id'
+        );
+    }
+
+    public function authors()
+    {
+        return $this->belongsToMany(
+            Author::class,
+            'product_authors',
+            'product_id',
+            'author_id'
+        );
     }
 
     public function digitalVariation(): HasMany

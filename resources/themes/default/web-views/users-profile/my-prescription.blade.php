@@ -24,24 +24,36 @@
                                 <h5 class="font-bold mb-0 fs-16">{{ translate('my_Prescriptions') }}</h5>
                             </div>
 
-
-
-
                             <div class="container">
-
                                 <div class="portfolio-item row">
                                     @if ($prescriptions->count() > 0)
                                         @foreach ($prescriptions as $prescription)
-                                        <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
-                                            <a href="{{ asset('public/storage/'.$prescription->file) }}"
-                                                class="fancylight popup-btn" data-fancybox-group="light">
-                                                <img class="img-fluid"
-                                                    src="{{ asset('public/storage/'.$prescription->file) }}"
-                                                    alt="">
-                                            </a>
-                                        </div>
+                                            <div class="item selfie col-lg-3 col-md-4 col-6 col-sm">
+                                                @php
+                                                    $fileExtension = pathinfo($prescription->file, PATHINFO_EXTENSION);
+                                                    $isImage = in_array(strtolower($fileExtension), [
+                                                        'jpg',
+                                                        'jpeg',
+                                                        'png',
+                                                        'gif',
+                                                        'bmp',
+                                                        'webp',
+                                                    ]);
+                                                @endphp
+                                                <a href="{{ asset('public/storage/' . $prescription->file) }}"
+                                                    class="">
+                                                    @if ($isImage)
+                                                        <img class="img-fluid"
+                                                            src="public/assets/front-end/img/default-image.jpg"
+                                                            alt="Prescription">
+                                                    @else
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('public/assets/front-end/img/default-pdf-img.webp') }}" width="150"
+                                                            alt="Default PDF">
+                                                    @endif
+                                                </a>
+                                            </div>
                                         @endforeach
-
                                     @else
                                         <div class="d-flex justify-content-center align-items-center h-100">
                                             <div class="d-flex flex-column justify-content-center align-items-center gap-3">

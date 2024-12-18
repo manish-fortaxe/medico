@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Contracts\Repositories\AuthorRepositoryInterface;
 use App\Contracts\Repositories\OrderDetailRepositoryInterface;
 use App\Contracts\Repositories\ProductCompareRepositoryInterface;
 use App\Contracts\Repositories\ProductRepositoryInterface;
@@ -40,6 +41,7 @@ class ProductDetailsController extends Controller
         private readonly ProductCompareRepositoryInterface $compareRepo,
         private readonly ProductTagRepositoryInterface     $productTagRepo,
         private readonly TagRepositoryInterface            $tagRepo,
+        private readonly AuthorRepositoryInterface         $authorRepo,
         private readonly SellerRepositoryInterface         $sellerRepo,
     )
     {
@@ -85,6 +87,8 @@ class ProductDetailsController extends Controller
                 offset: 1
             );
 
+            $authorDetails = $product->authors;
+
             if ($product['added_by'] == 'seller') {
                 $productsForReview = $this->productRepo->getWebListWithScope(
                     scope: 'active',
@@ -129,7 +133,7 @@ class ProductDetailsController extends Controller
             return view(VIEW_FILE_NAMES['products_details'], compact('product', 'countWishlist', 'countOrder', 'relatedProducts',
                 'dealOfTheDay', 'currentDate', 'sellerVacationStartDate', 'sellerVacationEndDate', 'sellerTemporaryClose',
                 'inHouseVacationStartDate', 'inHouseVacationEndDate', 'inHouseVacationStatus', 'inHouseTemporaryClose', 'overallRating',
-                'wishlistStatus', 'productReviews', 'rating', 'totalReviews', 'productsForReview', 'moreProductFromSeller', 'decimalPointSettings'));
+                'wishlistStatus', 'productReviews', 'rating', 'totalReviews', 'productsForReview', 'moreProductFromSeller', 'decimalPointSettings','authorDetails'));
         }
 
         Toastr::error(translate('not_found'));

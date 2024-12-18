@@ -101,6 +101,8 @@ class ProductController extends BaseController
         $dataArray = $service->getAddProductData(request: $request, addedBy: 'admin');
         $savedProduct = $this->productRepo->add(data: $dataArray);
         $this->productRepo->addRelatedTags(request: $request, product: $savedProduct);
+        $this->productRepo->addRelatedAuthors(request: $request, product: $savedProduct);
+        $this->productRepo->addRelatedMolecules(request: $request, product: $savedProduct);
         $this->translationRepo->add(request: $request, model: 'App\Models\Product', id: $savedProduct->id);
 
         // Digital Product Variation

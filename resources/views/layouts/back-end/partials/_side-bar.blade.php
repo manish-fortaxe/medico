@@ -1,5 +1,5 @@
 @php
-    use App\Enums\ViewPaths\Admin\Brand;use App\Enums\ViewPaths\Admin\Tag;use App\Enums\ViewPaths\Admin\BusinessSettings;use App\Enums\ViewPaths\Admin\Category;use App\Enums\ViewPaths\Admin\Chatting;use App\Enums\ViewPaths\Admin\Currency;use App\Enums\ViewPaths\Admin\Customer;use App\Enums\ViewPaths\Admin\CustomerWallet;use App\Enums\ViewPaths\Admin\Dashboard;
+    use App\Enums\ViewPaths\Admin\Brand;use App\Enums\ViewPaths\Admin\Molecule;use App\Enums\ViewPaths\Admin\MoleculeFAQ;use App\Enums\ViewPaths\Admin\BusinessSettings;use App\Enums\ViewPaths\Admin\Category;use App\Enums\ViewPaths\Admin\Chatting;use App\Enums\ViewPaths\Admin\Currency;use App\Enums\ViewPaths\Admin\Customer;use App\Enums\ViewPaths\Admin\CustomerWallet;use App\Enums\ViewPaths\Admin\Dashboard;
     use App\Enums\ViewPaths\Admin\DatabaseSetting;use App\Enums\ViewPaths\Admin\DealOfTheDay;use App\Enums\ViewPaths\Admin\DeliveryMan;use App\Enums\ViewPaths\Admin\DeliverymanWithdraw;use App\Enums\ViewPaths\Admin\DeliveryRestriction;use App\Enums\ViewPaths\Admin\Employee;use App\Enums\ViewPaths\Admin\EnvironmentSettings;use App\Enums\ViewPaths\Admin\FeatureDeal;use App\Enums\ViewPaths\Admin\FeaturesSection;use App\Enums\ViewPaths\Admin\FlashDeal;use App\Enums\ViewPaths\Admin\GoogleMapAPI;use App\Enums\ViewPaths\Admin\HelpTopic;use App\Enums\ViewPaths\Admin\InhouseProductSale;use App\Enums\ViewPaths\Admin\Mail;use App\Enums\ViewPaths\Admin\OfflinePaymentMethod;use App\Enums\ViewPaths\Admin\Order;
     use App\Enums\ViewPaths\Admin\Pages;use App\Enums\ViewPaths\Admin\Product;use App\Enums\ViewPaths\Admin\PushNotification;use App\Enums\ViewPaths\Admin\Recaptcha;use App\Enums\ViewPaths\Admin\RefundRequest;use App\Enums\ViewPaths\Admin\SiteMap;use App\Enums\ViewPaths\Admin\SMSModule;use App\Enums\ViewPaths\Admin\SocialLoginSettings;use App\Enums\ViewPaths\Admin\SocialMedia;use App\Enums\ViewPaths\Admin\SoftwareUpdate;use App\Enums\ViewPaths\Admin\SubCategory;use App\Enums\ViewPaths\Admin\SubSubCategory;use App\Enums\ViewPaths\Admin\ThemeSetup;
     use App\Enums\ViewPaths\Admin\Vendor;
@@ -333,7 +333,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/tag*')?'active':''}}">
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/molecule*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:" title="{{translate('molecules')}}">
                                     <i class="tio-star nav-icon"></i>
@@ -341,22 +341,22 @@
                                         class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('molecules')}}</span>
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
-                                    style="display: {{Request::is('admin/tag*')?'block':'none'}}">
-                                    <li class="nav-item {{Request::is('admin/tag/'.Tag::ADD[URI])?'active':''}}"
+                                    style="display: {{Request::is('admin/molecule*')?'block':'none'}}">
+                                    <li class="nav-item {{Request::is('admin/molecule/'.Molecule::ADD[URI])?'active':''}}"
                                         title="{{translate('add_new')}}">
-                                        <a class="nav-link " href="{{route('admin.tag.add-new')}}">
+                                        <a class="nav-link " href="{{route('admin.molecule.add-new')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{translate('add_new')}}</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/tag/'.Tag::LIST[URI])?'active':''}}"
+                                    <li class="nav-item {{Request::is('admin/molecule/'.Molecule::LIST[URI])?'active':''}}"
                                         title="{{translate('list')}}">
-                                        <a class="nav-link " href="{{route('admin.tag.list')}}">
+                                        <a class="nav-link " href="{{route('admin.molecule.list')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
                                             <span class="text-truncate">{{translate('list')}}</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/brand/'.Brand::LIST[URI])?'active':''}}"
+                                    <li class="nav-item {{Request::is('admin/molecule-faq/'.MoleculeFAQ::LIST[URI])?'active':''}}"
                                         title="{{translate('molecules_faq')}}">
                                         <a class="nav-link " href="{{route('admin.molecule-faq.view')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -381,6 +381,15 @@
                                     <i class="tio-category-outlined nav-icon"></i>
                                     <span
                                         class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('department_Setup')}}</span>
+                                </a>
+                            </li>
+                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/author*')?'active':''}}">
+                                <a class="js-navbar-vertical-aside-menu-link nav-link"
+                                   href="{{route('admin.author.view')}}"
+                                   title="{{translate('author_Setup')}}">
+                                    <i class="tio-category-outlined nav-icon"></i>
+                                    <span
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{translate('author_Setup')}}</span>
                                 </a>
                             </li>
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/products/'.Product::LIST[URI].'/in-house') || Request::is('admin/products/'.Product::BULK_IMPORT[URI]) || (Request::is('admin/products/'.Product::ADD[URI])) || (Request::is('admin/products/'.Product::VIEW[URI].'/in-house/*')) || (Request::is('admin/products/'.Product::BARCODE_GENERATE[URI].'/*'))|| (Request::is('admin/products/'.Product::UPDATE[URI].'/*') && request()->has('product-gallery')))?'active':''}}">

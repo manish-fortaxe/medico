@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\DealOfTheDay;
 use App\Models\FlashDealProduct;
 use App\Models\Product;
+use App\Models\ProductAuthor;
 use App\Models\Tag;
 use App\Models\Translation;
 use App\Models\Wishlist;
@@ -56,6 +57,28 @@ class ProductRepository implements ProductRepositoryInterface
             }
         }
         $product->tags()->sync($tagIds);
+    }
+
+    public function addRelatedAuthors(object $request, object $product): void
+    {
+        if (!empty($request->author_id)) {
+            // Sync authors: remove existing and attach new ones
+            $product->authors()->sync($request->author_id);
+        } else {
+            // If no authors are provided, detach all
+            $product->authors()->detach();
+        }
+    }
+
+    public function addRelatedMolecules(object $request, object $product): void
+    {
+        if (!empty($request->molecule_id)) {
+            // Sync molecules: remove existing and attach new ones
+            $product->molecules()->sync($request->molecule_id);
+        } else {
+            // If no molecules are provided, detach all
+            $product->molecules()->detach();
+        }
     }
 
     public function getSlug($value): string

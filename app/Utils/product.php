@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Molecule;
 use App\Models\Product;
+use App\Models\ProductMolecule;
 use App\Models\ProductTag;
 use App\Models\Review;
 use App\Models\Tag;
@@ -138,14 +140,14 @@ if (!function_exists('salt_composition')) {
     function salt_composition($id)
     {
         $html = '';
-        $tags = ProductTag::where('product_id', $id)->get();
+        $molecules = ProductMolecule::where('product_id', $id)->get();
 
-        foreach ($tags as $index => $tag) {
-            $molecule = Tag::find($tag->tag_id);
+        foreach ($molecules as $index => $molecule) {
+            $molecule = Molecule::find($molecule->molecule_id);
             if ($molecule) {
-                $html .= '<a target="_blank" href="' . route('single-molecule', $molecule->slug) . '">' . $molecule->tag . '</a>';
+                $html .= '<a target="_blank" href="' . route('single-molecule', $molecule->slug) . '">' . $molecule->name . '</a>';
                 // Add a comma after each tag except the last one
-                if ($index < $tags->count() - 1) {
+                if ($index < $molecules->count() - 1) {
                     $html .= ', ';
                 }
             }

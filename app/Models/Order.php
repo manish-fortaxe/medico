@@ -173,6 +173,11 @@ class Order extends Model
         return $this->belongsTo(User::class, 'customer_id');
     }
 
+    public function prescription(): BelongsTo
+    {
+        return $this->belongsTo(UserPrescription::class, 'prescription_id');
+    }
+
     public function shipping(): BelongsTo
     {
         return $this->belongsTo(ShippingMethod::class, 'shipping_method_id');

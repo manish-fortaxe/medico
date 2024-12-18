@@ -25,6 +25,7 @@ if (!function_exists('getValidImage')) {
         $placeholderMap = [
             'backend-basic' => 'back-end/img/placeholder/placeholder-1-1.png',
             'backend-brand' => 'back-end/img/placeholder/brand.png',
+            'backend-author' => 'back-end/img/placeholder/brand.png',
             'backend-banner' => 'back-end/img/placeholder/placeholder-4-1.png',
             'backend-category' => 'back-end/img/placeholder/category.png',
             'backend-logo' => 'back-end/img/placeholder/placeholder-4-1.png',
@@ -106,6 +107,7 @@ if (!function_exists('getValidImage')) {
             $placeholderMap = [
                 'backend-basic' => 'back-end/img/placeholder/placeholder-1-1.png',
                 'backend-brand' => 'back-end/img/placeholder/brand.png',
+                'backend-author' => 'back-end/img/placeholder/brand.png',
                 'backend-banner' => 'back-end/img/placeholder/placeholder-4-1.png',
                 'backend-category' => 'back-end/img/placeholder/category.png',
                 'backend-logo' => 'back-end/img/placeholder/placeholder-4-1.png',

@@ -3,6 +3,7 @@
 use App\Enums\ViewPaths\Admin\AddonSetup;
 use App\Enums\ViewPaths\Admin\AllPagesBanner;
 use App\Enums\ViewPaths\Admin\Attribute;
+use App\Enums\ViewPaths\Admin\Author;
 use App\Enums\ViewPaths\Admin\Banner;
 use App\Enums\ViewPaths\Admin\Blog;
 use App\Enums\ViewPaths\Admin\Brand;
@@ -40,6 +41,7 @@ use App\Enums\ViewPaths\Admin\InhouseShop;
 use App\Enums\ViewPaths\Admin\InvoiceSettings;
 use App\Enums\ViewPaths\Admin\Language;
 use App\Enums\ViewPaths\Admin\Mail;
+use App\Enums\ViewPaths\Admin\Molecule;
 use App\Enums\ViewPaths\Admin\MoleculeFAQ;
 use App\Enums\ViewPaths\Admin\MostDemanded;
 use App\Enums\ViewPaths\Admin\Notification;
@@ -107,9 +109,11 @@ use App\Http\Controllers\Admin\POS\CartController;
 use App\Http\Controllers\Admin\POS\POSController;
 use App\Http\Controllers\Admin\POS\POSOrderController;
 use App\Http\Controllers\Admin\Product\AttributeController;
+use App\Http\Controllers\Admin\Product\AuthorController;
 use App\Http\Controllers\Admin\Product\BrandController;
 use App\Http\Controllers\Admin\Product\CategoryController;
 use App\Http\Controllers\Admin\Product\DepartmentController;
+use App\Http\Controllers\Admin\Product\MoleculeController;
 use App\Http\Controllers\Admin\Product\MoleculeFAQController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Product\ReviewController;
@@ -333,16 +337,27 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
         });
     });
 
+    // Author
+    Route::group(['prefix' => 'author', 'as' => 'author.','middleware'=>['module:product_management']], function () {
+        Route::controller(AuthorController::class)->group(function (){
+            Route::get(Author::LIST[URI], 'index')->name('view');
+            Route::post(Author::STORE[URI], 'add')->name('store');
+            Route::get(Author::UPDATE[URI].'/{id}', 'getUpdateView')->name('update');
+            Route::post(Author::UPDATE[URI].'/{id}', 'update');
+            Route::post(Author::DELETE[URI], 'delete')->name('delete');
+        });
+    });
+
     // Molecule
-    Route::group(['prefix' => 'tag', 'as' => 'tag.','middleware'=>['module:product_management']], function () {
-        Route::controller(TagController::class)->group(function (){
-            Route::get(Tag::LIST[URI], 'index')->name('list');
-            Route::get(Tag::ADD[URI], 'getAddView')->name('add-new');
-            Route::post(Tag::ADD[URI], 'add');
-            Route::get(Tag::UPDATE[URI].'/{id}', 'getUpdateView')->name('update');
-            Route::post(Tag::UPDATE[URI].'/{id}', 'update');
-            Route::post(Tag::DELETE[URI], 'delete')->name('delete');
-            Route::post(Tag::STATUS[URI], 'updateStatus')->name('status-update');
+    Route::group(['prefix' => 'molecule', 'as' => 'molecule.','middleware'=>['module:product_management']], function () {
+        Route::controller(MoleculeController::class)->group(function (){
+            Route::get(Molecule::LIST[URI], 'index')->name('list');
+            Route::get(Molecule::ADD[URI], 'getAddView')->name('add-new');
+            Route::post(Molecule::ADD[URI], 'add');
+            Route::get(Molecule::UPDATE[URI].'/{id}', 'getUpdateView')->name('update');
+            Route::post(Molecule::UPDATE[URI].'/{id}', 'update');
+            Route::post(Molecule::DELETE[URI], 'delete')->name('delete');
+            Route::post(Molecule::STATUS[URI], 'updateStatus')->name('status-update');
         });
     });
 

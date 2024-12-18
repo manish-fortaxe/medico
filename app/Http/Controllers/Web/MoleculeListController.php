@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Utils\CategoryManager;
 use App\Utils\Helpers;
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
+use App\Models\Molecule;
 use App\Models\MoleculeFAQ;
-use App\Models\Tag;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -32,7 +31,7 @@ class MoleculeListController extends Controller
 
     public function default_theme($request): View|JsonResponse|Redirector|RedirectResponse
     {
-        $molecules = Tag::get();
+        $molecules = Molecule::get();
 
         $groupedMolecules = $molecules->groupBy(function ($molecule) {
             return strtoupper(substr($molecule->tag, 0, 1)); // Group by the first letter (uppercase)
@@ -48,7 +47,7 @@ class MoleculeListController extends Controller
 
     function singleMolecule($slug)
     {
-        $molecule = Tag::where('slug',$slug)->first();
+        $molecule = Molecule::where('slug',$slug)->first();
         $faqs = MoleculeFAQ::where('tag_id', $molecule->id)->get();
         return view(VIEW_FILE_NAMES['molecule_view_page'], [
             'molecule' => $molecule, 'faqs' => $faqs
