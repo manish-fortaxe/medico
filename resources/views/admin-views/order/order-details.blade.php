@@ -142,12 +142,12 @@
                                     </div>
                                 </div>
                             @endif
-                            @if ($order->prescription_id !=null)
+                            @if (isset($order->is_prescription) && isset($order->prescription_id) && $order->prescription_id !=Null)
                                 <div class="mt-2 mb-5 w-100 d-block col-6">
                                     <div class="gap-10">
                                         <h4>{{translate('prescription')}}:</h4>
                                         <div class="text-justify">
-                                            <a class="btn btn-sm btn-info" href="{{ asset('public/storage/'.$order->prescription->file) }}" target="_blank" >Download</a>
+                                            <a class="btn btn-sm btn-info" href="{{ asset('public/storage/'.$order->prescription->file ?? '') }}" target="_blank" >Download</a>
                                         </div>
                                     </div>
                                 </div>

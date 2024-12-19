@@ -894,7 +894,7 @@
             </div>
         </div> --}}
 
-        <div class="container">
+        {{-- <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="counter">
@@ -933,7 +933,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         @if ($blogs->count() > 0)
             <div class="container-fluid ">
@@ -958,7 +958,7 @@
             </div>
         @endif
 
-        <div class="container mt-3 mb-5">
+        {{-- <div class="container mt-3 mb-5">
             <div class="row">
                 <div class="col-sm-12">
                     <h2 class="mb-5">Testimonials</h2>
@@ -1069,7 +1069,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 
