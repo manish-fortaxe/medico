@@ -1,5 +1,5 @@
-<div class="__inline-9 rtl">
-    <div class="text-center pb-4">
+<div class="__inline-9 rtl mt-2">
+    {{-- <div class="text-center pb-4">
         <div class="max-w-860px mx-auto footer-slider-container">
             <div class="container">
                 <div class="footer-slider owl-theme owl-carousel">
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <footer class="page-footer font-small mdb-color rtl">
         <div class="pt-4 custom-light-primary-color-20">
@@ -69,70 +69,31 @@
                                  alt="{{ $web_config['name']->value }}"/>
                         </a>
 
-                        @if($web_config['ios']['status'] || $web_config['android']['status'])
-                            <div class="mt-4 pt-lg-4">
-                                <h6 class="text-uppercase font-weight-bold footer-header align-items-center">
-                                    {{ translate('download_our_app')}}
-                                </h6>
-                            </div>
-                        @endif
+                        <p class="mt-4">Demo text</p>
 
-                        <div class="store-contents d-flex justify-content-center pr-lg-4">
-                            @if($web_config['ios']['status'])
-                                <div class="me-2 mb-2">
-                                    <a class="" href="{{ $web_config['ios']['link'] }}" role="button">
-                                        <img width="100" src="{{theme_asset(path: "public/assets/front-end/png/apple_app.png")}}"
-                                             alt="">
-                                    </a>
-                                </div>
-                            @endif
-
-                            @if($web_config['android']['status'])
-                                <div class="me-2 mb-2">
-                                    <a href="{{ $web_config['android']['link'] }}" role="button">
-                                        <img width="100" src="{{theme_asset(path: "public/assets/front-end/png/google_app.png")}}"
-                                             alt="">
-                                    </a>
-                                </div>
-                            @endif
-                        </div>
                     </div>
                     <div class="col-md-9">
                         <div class="row">
                             <div class="col-sm-3 col-6 footer-padding-bottom text-start">
-                                <h6 class="text-uppercase mobile-fs-12 font-semi-bold footer-header">{{ translate('special')}}</h6>
+                                <h6 class="text-uppercase mobile-fs-12 font-semi-bold footer-header">{{ translate('quick_Links')}}</h6>
                                 <ul class="widget-list __pb-10px">
-                                    @php($flash_deals=\App\Models\FlashDeal::where(['status'=>1,'deal_type'=>'flash_deal'])->whereDate('start_date','<=',date('Y-m-d'))->whereDate('end_date','>=',date('Y-m-d'))->first())
-                                    @if(isset($flash_deals))
-                                        <li class="widget-list-item">
-                                            <a class="widget-list-link"
-                                               href="{{route('flash-deals',[$flash_deals['id']])}}">
-                                                {{ translate('flash_deal')}}
-                                            </a>
-                                        </li>
-                                    @endif
+
                                     <li class="widget-list-item">
                                         <a class="widget-list-link"
-                                           href="{{route('products',['data_from'=>'featured','page'=>1])}}">
-                                            {{ translate('featured_products')}}
+                                           href="{{route('about-us')}}">
+                                            {{ translate('about_Us')}}
                                         </a>
                                     </li>
                                     <li class="widget-list-item">
                                         <a class="widget-list-link"
-                                           href="{{route('products',['data_from'=>'latest','page'=>1])}}">
-                                            {{ translate('latest_products')}}
+                                           href="{{route('contacts')}}">
+                                            {{ translate('contact_Us')}}
                                         </a>
                                     </li>
                                     <li class="widget-list-item">
                                         <a class="widget-list-link"
-                                           href="{{route('products',['data_from'=>'best-selling','page'=>1])}}">
-                                            {{ translate('best_selling_product')}}
-                                        </a>
-                                    </li>
-                                    <li class="widget-list-item">
-                                        <a class="widget-list-link"
-                                           href="{{route('products',['data_from'=>'top-rated','page'=>1])}}">
-                                            {{ translate('top_rated_product')}}
+                                           href="{{route('helpTopic')}}">
+                                            {{ translate('faqs')}}
                                         </a>
                                     </li>
 
@@ -222,21 +183,33 @@
                                 @endif
                             </div>
                             <div class="col-sm-5 footer-padding-bottom offset-max-sm--1 pb-3 pb-sm-0">
-                                <div class="mb-2">
-                                    <h6 class="text-uppercase mobile-fs-12 font-semi-bold footer-header text-center text-sm-start">{{ translate('newsletter')}}</h6>
-                                    <div class="text-center text-sm-start mobile-fs-12">{{ translate('subscribe_to_our_new_channel_to_get_latest_updates')}}</div>
+                                @if($web_config['ios']['status'] || $web_config['android']['status'])
+                            <div class="mt-4 pt-lg-4">
+                                <h6 class="text-uppercase font-weight-bold footer-header align-items-center">
+                                    {{ translate('download_our_app')}}
+                                </h6>
+                            </div>
+                        @endif
+
+                        <div class="store-contents d-flex justify-content-center pr-lg-4">
+                            @if($web_config['ios']['status'])
+                                <div class="me-2 mb-2">
+                                    <a class="" href="{{ $web_config['ios']['link'] }}" role="button">
+                                        <img width="100" src="{{theme_asset(path: "public/assets/front-end/png/apple_app.png")}}"
+                                             alt="">
+                                    </a>
                                 </div>
-                                <div class="text-nowrap mb-4 position-relative">
-                                    <form action="{{ route('subscription') }}" method="post">
-                                        @csrf
-                                        <input type="email" name="subscription_email"
-                                               class="form-control subscribe-border text-align-direction p-12px"
-                                               placeholder="{{ translate('your_Email_Address')}}" required>
-                                        <button class="subscribe-button" type="submit">
-                                            {{ translate('subscribe')}}
-                                        </button>
-                                    </form>
+                            @endif
+
+                            @if($web_config['android']['status'])
+                                <div class="me-2 mb-2">
+                                    <a href="{{ $web_config['android']['link'] }}" role="button">
+                                        <img width="100" src="{{theme_asset(path: "public/assets/front-end/png/google_app.png")}}"
+                                             alt="">
+                                    </a>
                                 </div>
+                            @endif
+                        </div>
                             </div>
                         </div>
                         <div class="row mt-4 {{Session::get('direction') === "rtl" ? ' flex-row-reverse' : ''}}">

@@ -5,6 +5,11 @@
 @push('css_or_js')
     @include(VIEW_FILE_NAMES['product_seo_meta_content_partials'], ['metaContentData' => $product?->seoInfo, 'product' => $product])
     <link rel="stylesheet" href="{{ theme_asset(path: 'public/assets/front-end/css/product-details.css') }}"/>
+    <style>
+        .small-text{
+            font-size: 14px !important;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -274,11 +279,11 @@
                                         </div>
 
                                         @isset($product->tags)
-                                        <p><b>Salt Composition :</b> {!! salt_composition($product->id) !!}</p>
+                                        <p class="small-text"><b>Salt Composition :</b> {!! salt_composition($product->id) !!}</p>
                                         @endisset
-                                        @isset($product->brand)<p><b>Manufacturer :</b> {{ $product->brand->name }}</p>@endisset
-                                        @isset($product->origin)<p><b>Origin of Medicine :</b> {{ $product->origin }}</p>@endisset
-                                        @isset($product->contains)<span>{{ $product->contains }}</span>@endisset
+                                        @isset($product->brand)<p class="small-text"><b>Manufacturer :</b> {{ $product->brand->name }}</p>@endisset
+                                        @isset($product->origin)<p class="small-text"><b>Origin of Medicine :</b> {{ $product->origin }}</p>@endisset
+                                        @isset($product->contains)<span class="small-text">{{ $product->contains }}</span>@endisset
 
                                     </div>
                                     <div class="mt-3">
