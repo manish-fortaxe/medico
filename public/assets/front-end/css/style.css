@@ -436,7 +436,7 @@ a {
 }
 
 .__mega-nav .nav-item .nav-link {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .__mega-nav .nav-item .nav-link span {
@@ -608,7 +608,7 @@ a {
 }
 
 .font-bold {
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .categories-title .font-semi-bold,
@@ -649,7 +649,7 @@ a {
 }
 
 .arrival-title {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 20px;
     display: flex;
     align-items: center;
@@ -1557,7 +1557,7 @@ a {
 .__table thead th,
 .__table thead td {
     border-top: none;
-    font-weight: 700;
+    font-weight: 400;
     text-transform: capitalize;
     font-size: 15px;
     white-space: nowrap;
@@ -1609,7 +1609,7 @@ a {
 }
 
 .__customer-sidebar .widget-title .active-menu {
-    font-weight: 700;
+    font-weight: 400;
     background: #f8f8fa;
 }
 
@@ -2173,7 +2173,7 @@ a {
 }
 
 .__ticket-table th {
-    font-weight: 700;
+    font-weight: 400;
     text-transform: capitalize;
     border-top: none;
     white-space: nowrap;
@@ -2472,7 +2472,7 @@ a {
 }
 
 .__inline-10 .active .seller {
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .__inline-10 .for-count-value {
@@ -2706,7 +2706,7 @@ a {
 }
 
 .__inline-23 .feature_header span {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 25px;
     background-color: #ffffff;
     text-transform: uppercase;
@@ -2750,8 +2750,8 @@ a {
     }
 }
 .__inline-24 {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .__inline-25 {
@@ -3496,7 +3496,7 @@ a {
 
 .__inline-51 .headerTitle {
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 400;
     margin-top: 2rem;
 }
 
@@ -3552,7 +3552,7 @@ a {
 }
 
 .__inline-53 .spanTr {
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .__inline-53 .spandHeadO {
@@ -3629,7 +3629,7 @@ a {
 
 .__inline-58 .headerTitle {
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 400;
     margin-top: 2rem;
 }
 
@@ -3639,7 +3639,7 @@ a {
 
 @media (max-width: 600px) {
     .__inline-58 .headerTitle {
-        font-weight: 700;
+        font-weight: 400;
         margin-top: 1rem;
     }
     .__inline-58 .sidebar_heading h1 {
@@ -3727,7 +3727,7 @@ a {
 }
 
 .__inline-59 .flash_deal_title {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 25px;
     text-transform: uppercase;
 }
@@ -3742,7 +3742,7 @@ a {
 }
 
 .__inline-59 .flash_deal_product_details .flash-product-price {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 25px;
 }
 
@@ -3774,7 +3774,7 @@ a {
 }
 .__inline-60 .headerTitle {
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 400;
     margin-top: 2rem;
 }
 
@@ -3816,7 +3816,7 @@ a {
         font-size: 19px;
     }
     .__inline-60 .headerTitle {
-        font-weight: 700;
+        font-weight: 400;
         margin-top: 1rem;
     }
 }
@@ -3873,7 +3873,7 @@ a {
 }
 
 .__inline-61 .flash_deal_product_details .flash-product-price {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 14px;
 }
 
@@ -3936,13 +3936,13 @@ a {
 }
 @media (max-width: 600px) {
     .__inline-61 .flash_deal_title {
-        font-weight: 700;
+        font-weight: 400;
         font-size: 25px;
         text-transform: uppercase;
     }
     .__inline-61 .cz-countdown .cz-countdown-value {
         font-size: 15px !important;
-        font-weight: 700 !important;
+        font-weight: 400 !important;
     }
     .__inline-61 .featured_deal {
         opacity: 1 !important;
@@ -4061,7 +4061,7 @@ a {
 }
 .__inline-61 .flash-deal-text span {
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 400;
 }
 @media screen and (min-width: 1200px) {
     .__inline-61 .flash-deal-text {
@@ -4112,7 +4112,7 @@ a {
     font-size: 22px;
     margin-top: 15px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .__inline-61 .feature-product .czi-arrow-left {
@@ -4205,7 +4205,7 @@ a {
 }
 
 .__inline-64 .spanTr {
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .__inline-64 .spandHeadO {
@@ -5237,7 +5237,7 @@ a {
 }
 
 .coupon__discount strong {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 16px;
 }
 
@@ -5359,7 +5359,7 @@ a {
 }
 
 .store-report-content .left-content-card .info .subtitle {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 28px;
     line-height: 33px;
     font-family: "Roboto", sans-serif;
@@ -5493,7 +5493,7 @@ a {
 
 .total--orders h3 {
     margin: 0;
-    font-weight: 700 !important;
+    font-weight: 400 !important;
     font-size: 19px;
     line-height: 23px;
     color: #334257 !important;
@@ -5575,7 +5575,7 @@ a {
 }
 
 .earning-statistics-content .title {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 28px;
     line-height: 33px;
     color: #334257;
@@ -5868,7 +5868,7 @@ a {
 .refer_and_earn_section .primary-heading {
     color: var(--primary-clr);
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 400;
     text-align: center;
 }
 
@@ -5901,7 +5901,7 @@ a {
 }
 
 .refer_and_earn_section .refer_code_box .refer_code {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 16px;
     line-height: 22px;
     cursor: pointer;
@@ -5947,7 +5947,7 @@ a {
 
 .refer_and_earn_section .information-section h4 {
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 25px;
     letter-spacing: 0em;
 }
@@ -6034,7 +6034,7 @@ a {
 }
 
 .ticket-amount {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 1.3rem;
     white-space: nowrap;
     margin-block-end: 0.3rem;
@@ -6073,7 +6073,7 @@ a {
     outline: 1px dashed var(--blue);
     color: var(--blue);
     border: none;
-    font-weight: 700;
+    font-weight: 400;
     background-color: rgba(var(--blue), 0.1);
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
@@ -6157,7 +6157,7 @@ a {
     font-size: 23px;
 }
 .fs-24 {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .fs-25 {
@@ -6382,7 +6382,7 @@ a {
 .others-store-card .name-area .info h5 {
     color: #444a4e;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 400;
     transition: all ease 0.3s;
     margin: 0 0 4px 0;
 }
@@ -6426,7 +6426,7 @@ a {
 .others-store-card .info-area .info-item h6 {
     margin: 0;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 400;
 }
 @media screen and (max-width: 450px) {
     .others-store-card .info-area .info-item {
@@ -7146,7 +7146,7 @@ span.badge-accent:hover {
 }
 
 .my-wallet-card-content .subtitle {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 1rem;
     line-height: 1.2857142857rem;
     margin-bottom: 0.7142857143rem;
@@ -7472,7 +7472,7 @@ span.badge-accent:hover {
     color: rgba(38, 45, 52, 0.7) !important;
     padding: 10px !important;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 18px;
     border-bottom: 2px solid transparent !important;
     border-radius: 0 !important;
@@ -7606,11 +7606,12 @@ span.badge-accent:hover {
 }
 
 .fw-bold {
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .fw-semibold {
-    font-weight: 600;
+    /* font-weight: 600; */
+    font-weight: 400;
 }
 
 .ticket-view-control {
@@ -7765,7 +7766,7 @@ span.badge-accent:hover {
     overflow-y: auto;
 }
 .f-20 {
-    font-weight: 700 !important;
+    font-weight: 400 !important;
     font-size: 28px;
 }
 
@@ -8380,7 +8381,7 @@ span.badge-accent:hover {
 }
 input.form-control.fz-30 {
     height: 50px;
-    font-weight: 700;
+    font-weight: 400;
 }
 .select_shipping_address,
 .select_billing_address {
@@ -8531,7 +8532,7 @@ input.form-control.fz-30 {
     border: 1px solid transparent;
     padding: 0.5rem 1.375rem;
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1.5;
     border-radius: 0.3125rem;
 }

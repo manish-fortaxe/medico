@@ -10,6 +10,7 @@ use App\Models\PhoneOrEmailVerification;
 use App\Models\Wishlist;
 use App\Traits\EmailTemplateTrait;
 use App\Models\User;
+use App\Traits\SmsGateway;
 use App\Utils\CartManager;
 use App\Utils\Helpers;
 use App\Utils\SMS_module;
@@ -19,8 +20,9 @@ use Carbon\CarbonInterval;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-use Modules\Gateways\Traits\SmsGateway;
 
 class RegisterController extends Controller
 {
@@ -99,25 +101,45 @@ class RegisterController extends Controller
         $response = '';
 
         $token = rand(1000, 9999);
-        DB::table('phone_or_email_verifications')->insert([
-            'phone_or_email' => $user['email'],
-            'token' => $token,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        // Session::put('phone_otp', $token);
+        $isExist = DB::table('phone_or_email_verifications')->where('phone_or_email', $user['phone'])->exists();
+        if($isExist){
+            DB::table('phone_or_email_verifications')->where('phone_or_email', $user['phone'])->delete();
+
+            DB::table('phone_or_email_verifications')->insert([
+                'phone_or_email' => $user['phone'],
+                'token' => $token,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+        else{
+            DB::table('phone_or_email_verifications')->insert([
+                'phone_or_email' => $user['phone'],
+                'token' => $token,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
 
         $phoneVerification = getWebConfig(name: 'phone_verification');
         $emailVerification = getWebConfig(name: 'email_verification');
-        if ($phoneVerification && !$user->is_phone_verified) {
 
-            $publishedStatus = 0;
-            $paymentPublishedStatus = config('get_payment_publish_status');
-            if (isset($paymentPublishedStatus[0]['is_published'])) {
-                $publishedStatus = $paymentPublishedStatus[0]['is_published'];
-            }
+        Log::info('phoneVerification -'.json_encode($phoneVerification));
+
+        if ($phoneVerification) {
+        // if ($phoneVerification && !$user->is_phone_verified) {   //Old code
+
+            $publishedStatus = 1;
+            // $paymentPublishedStatus = config('get_payment_publish_status');
+            // if (isset($paymentPublishedStatus[0]['is_published'])) {
+            //     $publishedStatus = $paymentPublishedStatus[0]['is_published'];
+            // }
+            Log::info('phoneVerification published status -'.json_encode($publishedStatus));
 
             if($publishedStatus == 1) {
-                SmsGateway::send($user->phone, $token);
+                Log::info('token-'.json_encode($token));
+                SmsGateway::send($user->phone, $token, $user->id);
             }else{
                 SMS_module::send($user->phone, $token);
             }
@@ -161,21 +183,26 @@ class RegisterController extends Controller
         $email_verification = Helpers::get_business_settings('email_verification');
 
         $user = User::find($id);
-        if($phone_verification){
-            $user_verify = $user->is_phone_verified == 1 ? 1 : 0;
+        if(env('OTP_LOGIN')==true)
+        {
+            $user_verify=0;
+        }
+        elseif($phone_verification){
+            $user_verify = $user->is_phone_verified == 1 ? 1  : 0;
         }elseif($email_verification){
             $user_verify = $user->is_email_verified == 1 ? 1 : 0;
         }
 
-        $token = PhoneOrEmailVerification::where('phone_or_email','=',$user['email'])->first();
-        if($token){
-            $otp_resend_time = Helpers::get_business_settings('otp_resend_time') > 0 ? Helpers::get_business_settings('otp_resend_time') : 0;
-            $token_time = Carbon::parse($token->created_at);
-            $convert_time = $token_time->addSeconds($otp_resend_time);
-            $get_time = $convert_time > Carbon::now() ? Carbon::now()->diffInSeconds($convert_time) : 0;
-        }else{
+        $token = PhoneOrEmailVerification::where('phone_or_email','=',$user['phone'])->first();
+        // if($token){
+        //     $otp_resend_time = Helpers::get_business_settings('otp_resend_time') > 0 ? Helpers::get_business_settings('otp_resend_time') : 0;
+        //     $token_time = Carbon::parse($token->created_at);
+        //     $convert_time = $token_time->addSeconds($otp_resend_time);
+        //     $get_time = $convert_time > Carbon::now() ? Carbon::now()->diffInSeconds($convert_time) : 0;
+        // }else{
+        //     $get_time = 0;
+        // }
             $get_time = 0;
-        }
 
         return view(VIEW_FILE_NAMES['customer_auth_verify'], compact('user','user_verify','get_time'));
     }
@@ -186,12 +213,12 @@ class RegisterController extends Controller
         Validator::make($request->all(), [
             'token' => 'required',
         ]);
-
+        Session::forget('phone_otp');
         $email_status = Helpers::get_business_settings('email_verification');
         $phone_status = Helpers::get_business_settings('phone_verification');
 
         $user = User::find($request->id);
-        $verify = PhoneOrEmailVerification::where(['phone_or_email' => $user['email'], 'token' => $request['token']])->first();
+        $verify = PhoneOrEmailVerification::where(['phone_or_email' => $user['phone'], 'token' => $request['token']])->first();
 
         $max_otp_hit = Helpers::get_business_settings('maximum_otp_hit') ?? 5;
         $temp_block_time = Helpers::get_business_settings('temporary_block_time') ?? 5; //minute
@@ -209,10 +236,18 @@ class RegisterController extends Controller
             $verify->delete();
 
             Toastr::success(translate('verification_done_successfully'));
+           (env('OTP_LOGIN')==true)? auth('customer')->login($user):'';
+           CartManager::cart_to_db();
+
+           if(session()->has('keep_return_url')){
+            $route=session()->get('keep_return_url');
+            session()->forget('keep_return_url');
+            return redirect(url($route));
+           }
             return redirect(route('customer.auth.login'));
 
         }else{
-            $verification = PhoneOrEmailVerification::where(['phone_or_email' => $user['email']])->first();
+            $verification = PhoneOrEmailVerification::where(['phone_or_email' => $user['phone']])->first();
 
             if($verification){
                 if(isset($verification->temp_block_time) && Carbon::parse($verification->temp_block_time)->diffInSeconds() <= $temp_block_time){
@@ -248,7 +283,6 @@ class RegisterController extends Controller
             }else{
                 Toastr::error(translate('Verification code/ OTP mismatched'));
             }
-
             return redirect()->back();
         }
     }
@@ -264,7 +298,7 @@ class RegisterController extends Controller
         $phone_status = Helpers::get_business_settings('phone_verification');
 
         $user = User::find($request->id);
-        $verify = PhoneOrEmailVerification::where(['phone_or_email' => $user['email'], 'token' => $request['token']])->first();
+        $verify = PhoneOrEmailVerification::where(['phone_or_email' => $user['phone'], 'token' => $request['token']])->first();
 
         $max_otp_hit = Helpers::get_business_settings('maximum_otp_hit') ?? 5;
         $temp_block_time = Helpers::get_business_settings('temporary_block_time') ?? 5; //minute
@@ -289,7 +323,7 @@ class RegisterController extends Controller
             $message = translate('verification_done_successfully');
 
         }else{
-            $verification = PhoneOrEmailVerification::where(['phone_or_email' => $user['email']])->first();
+            $verification = PhoneOrEmailVerification::where(['phone_or_email' => $user['phone']])->first();
 
             if($verification){
                 if(isset($verification->temp_block_time) && Carbon::parse($verification->temp_block_time)->diffInSeconds() <= $temp_block_time){
@@ -360,7 +394,7 @@ class RegisterController extends Controller
     public static function resend_otp(Request $request)
     {
         $user = User::find($request->user_id);
-        $token = PhoneOrEmailVerification::where('phone_or_email','=', $user['email'])->first();
+        $token = PhoneOrEmailVerification::where('phone_or_email','=', $user['phone'])->first();
         $otp_resend_time = Helpers::get_business_settings('otp_resend_time') > 0 ? Helpers::get_business_settings('otp_resend_time') : 0;
 
         // Time Difference in Minutes
@@ -383,7 +417,7 @@ class RegisterController extends Controller
                 $token->save();
             }else{
                 $new_token = new PhoneOrEmailVerification();
-                $new_token->phone_or_email = $user['email'];
+                $new_token->phone_or_email = $user['phone'];
                 $new_token->token = $new_token_generate;
                 $new_token->created_at = now();
                 $new_token->updated_at = now();
@@ -392,16 +426,16 @@ class RegisterController extends Controller
 
             $phone_verification = Helpers::get_business_settings('phone_verification');
             $email_verification = Helpers::get_business_settings('email_verification');
-            if ($phone_verification && !$user->is_phone_verified) {
+            if ($phone_verification) {
 
-                $published_status = 0;
-                $payment_published_status = config('get_payment_publish_status');
-                if (isset($payment_published_status[0]['is_published'])) {
-                    $published_status = $payment_published_status[0]['is_published'];
-                }
+                $published_status = 1;
+                // $payment_published_status = config('get_payment_publish_status');
+                // if (isset($payment_published_status[0]['is_published'])) {
+                //     $published_status = $payment_published_status[0]['is_published'];
+                // }
 
                 if($published_status == 1){
-                    SmsGateway::send($user->phone, $new_token_generate);
+                    SmsGateway::send($user->phone, $new_token_generate, $user->id);
                 }else{
                     SMS_module::send($user->phone, $new_token_generate);
                 }

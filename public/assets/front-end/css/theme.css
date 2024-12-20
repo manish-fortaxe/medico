@@ -4,7 +4,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;400&display=swap");
 
 :root {
     --blue: #007bff;
@@ -132,7 +132,7 @@ ul ol {
 }
 
 dt {
-    font-weight: 700;
+    font-weight: 400;
 }
 
 dd {
@@ -401,6 +401,7 @@ h4,
 h5,
 .h5 {
     font-size: 1.25rem;
+    color: #002d71 !important;
 }
 
 h6,
@@ -545,7 +546,7 @@ kbd {
 kbd kbd {
     padding: 0;
     font-size: 100%;
-    font-weight: 700;
+    font-weight: 400;
     box-shadow: none;
 }
 
@@ -11702,7 +11703,7 @@ button.bg-accent:focus {
 }
 
 .font-weight-bold {
-    font-weight: 700 !important;
+    font-weight: 400 !important;
 }
 
 .font-weight-bolder {
@@ -11850,7 +11851,9 @@ hr {
 
 b,
 strong {
-    font-weight: 700;
+    font-weight: 400;
+    font-size: 14px;
+    color : var(--web-primary);
 }
 
 small {
@@ -16871,7 +16874,7 @@ a.badge-shadow:hover {
     background-color: #fff;
     color: #4b566b;
     font-size: 0.675rem;
-    font-weight: 700;
+    font-weight: 400;
     opacity: 1;
     box-shadow: 0 0.375rem 1rem -0.25rem rgba(0, 0, 0, 0.2);
     content: "\e969";
@@ -17052,7 +17055,7 @@ a.badge-shadow:hover {
 .video-popup-btn:not(.video-cover)::before {
     font-family: "sixvalley-icons";
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 400;
     content: "\e969";
 }
 
@@ -17135,7 +17138,7 @@ a.badge-shadow:hover {
 .widget-title {
     margin-bottom: 1.125rem;
     font-size: 1.0625rem;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .widget-categories .card,
@@ -18852,8 +18855,8 @@ body {
 .mega-nav .nav-item .nav-link {
     padding-top: 11px !important;
     font-size: 20px;
-    font-weight: 600;
-    padding-inline-start: 20px !important;
+    font-weight: 400;
+    padding-inline-start: 10px !important;
 }
 
 .nav-item .dropdown-toggle::after {
@@ -19034,7 +19037,7 @@ figure {
 }
 
 .feature_header span {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 25px;
     text-transform: uppercase;
 }
@@ -19061,7 +19064,7 @@ html[dir="rtl"] .feature_header span {
     .feature_header span {
         padding-right: 0;
         padding-left: 0;
-        font-weight: 700;
+        font-weight: 400;
         font-size: 25px;
         text-transform: uppercase;
     }
@@ -19182,7 +19185,7 @@ html[dir="rtl"] .feature_header span {
 
 .text-accent {
     font-family: "Roboto", sans-serif;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 18px;
 }
 
