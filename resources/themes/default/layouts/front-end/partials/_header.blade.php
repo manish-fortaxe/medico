@@ -44,7 +44,7 @@
                     </div>
                 @endif
 
-                <div class="topbar-text dropdown disable-autohide  __language-bar text-capitalize">
+                {{-- <div class="topbar-text dropdown disable-autohide  __language-bar text-capitalize">
                     <a class="topbar-link dropdown-toggle" href="#" data-toggle="dropdown">
                         @foreach(json_decode($language['value'],true) as $data)
                             @if($data['code'] == getDefaultLanguage())
@@ -70,7 +70,7 @@
                             @endif
                         @endforeach
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
