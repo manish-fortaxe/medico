@@ -131,9 +131,9 @@
                             <div class="form-group">
                                 <label for="is_prescription_required" class="title-color">{{ translate('is_Prescription_Required_?') }}</label>
                                 <div class="d-flex align-items-center">
-                                    <input type="radio" id="prescription_yes" name="is_prescription" value="yes" class="mr-1" />
+                                    <input type="radio" id="prescription_yes" name="is_prescription" value="yes" {{ $product->is_prescription == 1 ? 'checked' : '' }} class="mr-1" />
                                     <label for="prescription_yes" class="mr-3">Yes</label>
-                                    <input type="radio" id="prescription_no" name="is_prescription" value="no" class="mr-1" />
+                                    <input type="radio" id="prescription_no" name="is_prescription" value="no" {{ $product->is_prescription == 0 ? 'checked' : '' }} class="mr-1" />
                                     <label for="prescription_no">No</label>
                                 </div>
                             </div>
