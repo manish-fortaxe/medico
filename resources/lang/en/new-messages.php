@@ -8505,4 +8505,8 @@ return [
 	"If_only_the ‘Delivery_Available_Zip_Code_Area’ feature_is_enabled,_then_you’ll_be_able_to_deliver_on_all_the_zip_code_areas" => "If only the ‘Delivery Available Zip Code Area’ feature is enabled  then you’ll be able to deliver on all the zip code areas",
 	"quick_Links" => "Quick Links",
 	"faqs" => "Faqs",
+	"length" => "Length",
+	"width" => "Width",
+	"height" => "Height",
+	"weight" => "Weight",
 ];

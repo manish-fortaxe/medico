@@ -26,6 +26,8 @@ use App\Http\Controllers\BaseController;
 use App\Http\Requests\Admin\ProductDenyRequest;
 use App\Http\Requests\ProductAddRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Models\Author;
+use App\Models\Molecule;
 use App\Services\ProductService;
 use App\Traits\FileManagerTrait;
 use Brian2694\Toastr\Facades\Toastr;
@@ -88,8 +90,9 @@ class ProductController extends BaseController
         $defaultLanguage = $languages[0];
         $digitalProductFileTypes = ['audio', 'video', 'document', 'software'];
         $departments =$this->departmentRepo->getListWhere(dataLimit:'all');
-
-        return view(Product::ADD[VIEW], compact('categories', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes','departments'));
+        $authors = Author::get();
+        $molecules = Molecule::get();
+        return view(Product::ADD[VIEW], compact('categories', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes','departments','authors','molecules'));
     }
 
     public function add(ProductAddRequest $request, ProductService $service): JsonResponse|RedirectResponse
@@ -154,7 +157,11 @@ class ProductController extends BaseController
         $defaultLanguage = $languages[0];
         $digitalProductFileTypes = ['audio', 'video', 'document', 'software'];
         $departments =$this->departmentRepo->getListWhere(dataLimit:'all');
-        return view(Product::UPDATE[VIEW], compact('product', 'categories', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes','departments'));
+        $authors = Author::get();
+        $molecules = Molecule::get();
+        $selectedMolecules = $product->molecules->pluck('id')->toArray();
+        $selectedAuthors = $product->authors->pluck('id')->toArray();
+        return view(Product::UPDATE[VIEW], compact('product', 'categories', 'brands', 'brandSetting', 'digitalProductSetting', 'colors', 'attributes', 'languages', 'defaultLanguage', 'digitalProductFileTypes','departments','authors','molecules','selectedMolecules','selectedAuthors'));
     }
 
     public function update(ProductUpdateRequest $request, ProductService $service, string|int $id): JsonResponse|RedirectResponse
@@ -168,6 +175,8 @@ class ProductController extends BaseController
 
         $this->productRepo->update(id: $id, data: $dataArray);
         $this->productRepo->addRelatedTags(request: $request, product: $product);
+        $this->productRepo->addRelatedAuthors(request: $request, product: $product);
+        $this->productRepo->addRelatedMolecules(request: $request, product: $product);
         $this->translationRepo->update(request: $request, model: 'App\Models\Product', id: $id);
 
         self::getDigitalProductUpdateProcess($request, $product);

@@ -211,6 +211,40 @@
                                 <input type="text" name="contains" class="form-control" value="{{ $product->contains ?? '' }}" />
                             </div>
                         </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('HSN_CODE') }}</label>
+                                <input type="text" name="hsn_code" class="form-control" value="{{ $product->hsn_code ?? '' }}" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('cold_Chain') }}</label>
+                                <input type="text" name="cold_chain" class="form-control" value="{{ $product->cold_chain ?? '' }}" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('Author') }}</label>
+                                <select class="js-select2-custom form-control select2" name="author_id[]" multiple>
+                                    <option value="" disabled>Select Author</option>
+                                    @foreach ($authors as $author)
+                                        <option value="{{ $author->id }}" @if(in_array($author->id, $selectedAuthors)) selected @endif>{{ $author->name ?? '' }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('molecules') }}</label>
+                                <select class="js-select2-custom form-control" name="molecule_id[]" multiple>
+                                    <option value="" disabled>Select Molecules</option>
+                                    @foreach ($molecules as $molecule)
+                                        <option value="{{ $molecule->id }}" @if(in_array($molecule->id, $selectedMolecules)) selected @endif >{{ $molecule->name ?? '' }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="title-color d-flex align-items-center gap-2">
@@ -424,6 +458,45 @@
                                        name="shipping_cost" class="form-control" required>
                             </div>
                         </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <div class="d-flex gap-2">
+                                    <label class="title-color">{{ translate('length') }}</label>
+                                </div>
+
+                                <input type="text" placeholder="{{ translate('length') }}" name="length" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <div class="d-flex gap-2">
+                                    <label class="title-color">{{ translate('width') }}</label>
+                                </div>
+
+                                <input type="text" placeholder="{{ translate('width') }}" name="width" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <div class="d-flex gap-2">
+                                    <label class="title-color">{{ translate('height') }}</label>
+                                </div>
+
+                                <input type="text" placeholder="{{ translate('height') }}" name="height" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <div class="d-flex gap-2">
+                                    <label class="title-color">{{ translate('weight') }}</label>
+                                </div>
+
+                                <input type="text" placeholder="{{ translate('weight') }}" name="weight" class="form-control" required>
+                            </div>
+                        </div>
+
                         <div class="col-md-6 physical_product_show" id="shipping_cost_multy">
                             <div class="form-group">
                                 <div

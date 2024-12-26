@@ -216,19 +216,21 @@
                             <div class="form-group">
                                 <label class="title-color">{{ translate('Author') }}</label>
                                 <select class="js-select2-custom form-control select2" name="author_id[]" multiple>
-                                    <option value="" selected disabled>Select Author</option>
-                                    <option value="1">SpecialMeds</option>
-                                    <option value="2">Mrmed</option>
+                                    <option value="" disabled>Select Author</option>
+                                    @foreach ($authors as $author)
+                                        <option value="{{ $author->id }}">{{ $author->name ?? '' }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
                             <div class="form-group">
                                 <label class="title-color">{{ translate('molecules') }}</label>
-                                <select class="js-select2-custom form-control" name="molecule_id[]" multiple>
-                                    <option value="" selected disabled>Select Molecules</option>
-                                    <option value="1">SpecialMeds</option>
-                                    <option value="2">Mrmed</option>
+                                <select class="js-select2-custom form-control"  name="molecule_id[]" multiple>
+                                    <option value="" disabled>Select Molecules</option>
+                                    @foreach ($molecules as $molecule)
+                                        <option value="{{ $molecule->id }}">{{ $molecule->name ?? '' }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -434,6 +436,46 @@
                                 <input type="number" min="0" value="0" step="1"
                                        placeholder="{{ translate('shipping_cost') }}" name="shipping_cost"
                                        class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <div class="d-flex gap-2">
+                                    <label class="title-color">{{ translate('length') }}</label>
+                                </div>
+
+                                <input type="text" placeholder="{{ translate('length') }}" name="length" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <div class="d-flex gap-2">
+                                    <label class="title-color">{{ translate('width') }}</label>
+                                </div>
+
+                                <input type="text" placeholder="{{ translate('width') }}" name="width" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <div class="d-flex gap-2">
+                                    <label class="title-color">{{ translate('height') }}</label>
+                                </div>
+
+                                <input type="text" placeholder="{{ translate('height') }}" name="height" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
+                            <div class="form-group">
+                                <div class="d-flex gap-2">
+                                    <label class="title-color">{{ translate('weight') }}</label>
+                                </div>
+
+                                <input type="text" placeholder="{{ translate('weight') }}" name="weight" class="form-control" required>
                             </div>
                         </div>
 
