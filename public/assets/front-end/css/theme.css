@@ -4860,8 +4860,8 @@ input[type="button"].btn-block {
 
 .navbar-brand {
     display: inline-block;
-    padding-top: 0.65625rem;
-    padding-bottom: 0.65625rem;
+    /* padding-top: 0.65625rem;
+    padding-bottom: 0.65625rem; */
     margin-right: 1rem;
     font-size: 1.125rem;
     line-height: inherit;
