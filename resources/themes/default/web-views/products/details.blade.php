@@ -264,12 +264,10 @@
                                         <div class="mb-2">
                                             @if($product?->is_prescription == 1)
                                             <span class="badge badge-pill badge-light border border-1" style="border-color:#ff0000 !important" ><img src="{{ asset('public/images/prescription.png') }}" width="20" /> Prescription</span>
-
                                             @endisset
 
                                             @if($product?->cold_chain)
                                             <span class="badge badge-pill badge-light border border-1" data-toggle="tooltip" data-placement="top" title="Medicines Packed And Stored At The Optimum Temperature" style="border-color:#69b3fe !important" ><img src="{{ asset('public/images/coldchain.png') }}" width="20" />    Cold Chain</span>
-
                                             @endisset
 
                                             @if($product?->pap_description)
@@ -395,12 +393,12 @@
                                             class="px-4 pb-3 mb-3 mr-0 mr-md-2 bg-white __review-overview __rounded-10 pt-3">
                                             <ul class="nav nav-tabs nav--tabs d-flex justify-content-center mt-3"
                                                 role="tablist">
-                                                <li class="nav-item">
+                                                {{-- <li class="nav-item">
                                                     <a class="nav-link __inline-27 active " href="#overview"
                                                        data-toggle="tab" role="tab">
                                                         {{translate('overview')}}
                                                     </a>
-                                                </li>
+                                                </li> --}}
                                                 {{-- <li class="nav-item">
                                                     <a class="nav-link __inline-27" href="#reviews" data-toggle="tab"
                                                        role="tab">

@@ -22,8 +22,10 @@ use App\Utils\CartManager;
 use App\Utils\OrderManager;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Seshac\Shiprocket\Shiprocket;
 
 class Helpers
 {
@@ -1471,6 +1473,84 @@ if (!function_exists('currency_converter')) {
         }
 
         return Helpers::set_symbol(round($amount * $rate, 2));
+    }
+}
+
+if (!function_exists('dispatchShiprocketOrder')) {
+    function dispatchShiprocketOrder($request){
+
+        $order = Order::with(['customer','billingAddress','shippingAddress'])->where('transaction_ref', $request->order_id)->first();
+        // Log::info('order'.json_encode($order));
+        $user = $order->customer;
+        $billing = $order->billingAddress;
+        $shipping = $order->shippingAddress;
+
+        $orderDetails = [
+            'order_id' => $request->order_id,
+            'order_date' => Carbon::now(),
+            'pickup_location' => 'primary',
+            // 'courier_id' => $request->courier,
+            'billing_customer_name' => isset($user->f_name) ? $user->f_name : 'SpecialMeds',
+            'billing_last_name' => isset($user->l_name) ? $user->l_name : 'User',
+            'billing_city' => $billing->city,
+            'billing_pincode' => $billing->zip,
+            'billing_state' => 'State',
+            'billing_country' => $billing->country,
+            'billing_email' => isset($billing->email) ? $billing->email : 'fastemiindia@gmail.com',
+            'billing_phone' => $billing->phone,
+            'billing_address' => $billing->address,
+            'shipping_is_billing' => true,
+            'shipping_customer_name' => isset($user->f_name) ? $user->f_name : 'SpecialMeds',
+            'shipping_last_name' => isset($user->l_name) ? $user->l_name : 'User',
+            'shipping_city' => $shipping->city,
+            'shipping_pincode' => $shipping->zip,
+            'shipping_state' => 'State',
+            'shipping_country' => $shipping->country,
+            'shipping_email' =>  isset($shipping->email) ? $shipping->email : 'fastemiindia@gmail.com',
+            'shipping_phone' => $shipping->phone,
+            "payment_method" => "Prepaid",
+            "shipping_charges" => $order->shipping_cost,
+            "giftwrap_charges" => 0,
+            "transaction_charges" => 0,
+            "total_discount" => 0,
+            "sub_total" => $request->payment_amount,
+        ];
+        $order_details = [];
+        $order_dimenions = [
+            'length' => '200',
+            'breadth' => '200',
+            'height' => '200',
+            'weight' => '2',
+        ];
+        $counter = 0;
+        foreach($order->details as $key=>$detail)
+        {
+            $order_details[] = [
+                "name" => $detail->product->name,
+                "sku" => $detail->product->code,
+                "units" => $detail->qty,
+                "selling_price" => $detail->price,
+                "discount" => $detail->discount
+            ];
+            if($counter == 0){
+                $order_dimenions = [
+                    'length' => isset($detail->product) ? $detail->product->length : '200',
+                    'breadth' => isset($detail->product) ? $detail->product->width : '200',
+                    'height' => isset($detail->product) ? $detail->product->height : '200',
+                    'weight' => !is_null($detail->product->weight) && $detail->product->weight > 0 ? $detail->product->weight / 1000 : 1,
+                ];
+            }
+            $counter++;
+        }
+
+        $orderDetails['order_items'] = $order_details;
+        $orderDetails = array_merge($orderDetails, $order_dimenions);
+
+        Log::info('dispatch order -'.json_encode($orderDetails));
+        $token =  Shiprocket::getToken();
+        $response =  Shiprocket::order($token)->quickCreate($orderDetails);
+        Log::info('order-ship'.json_encode($response));
+        return $response;
     }
 }
 

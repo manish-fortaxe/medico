@@ -25,8 +25,8 @@
                                             class="text-danger">*</span></label>
                                     <select class="form-control" name="tag_id">
                                         <option>{{ translate('select_molecule') }}</option>
-                                        @foreach (\App\Models\Tag::get() as $tag)
-                                            <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                                        @foreach (\App\Models\Molecule::get() as $molecule)
+                                            <option value="{{ $molecule->id }}">{{ $molecule->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

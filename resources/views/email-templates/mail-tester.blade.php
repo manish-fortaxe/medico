@@ -18,11 +18,11 @@ $companyLogo = getWebConfig(name: 'company_web_logo');
 
 <div class="p-3 px-xl-4 py-sm-5">
     <div class="text-center">
-        <img height="60" class="mb-4" id="view-mail-icon"
+        {{-- <img height="60" class="mb-4" id="view-mail-icon"
              src="{{ dynamicStorage(path: 'storage/app/public/company/'.$companyLogo) }}"
-             alt="">
+             alt=""> --}}
         <h3 class="mb-3 text-capitalize">
-            {{ translate('test_mail') }} - {{ $companyName }}
+            {{ translate('test_mail') }} - SpecialMeds
         </h3>
         <h3 class="mb-3 text-capitalize">
             {{ translate('mail_received_successfully') }}
