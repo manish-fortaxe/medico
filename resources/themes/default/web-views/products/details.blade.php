@@ -384,251 +384,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="mt-4 rtl col-12 text-align-direction">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div>
-                                        <div
-                                            class="px-4 pb-3 mb-3 mr-0 mr-md-2 bg-white __review-overview __rounded-10 pt-3">
-                                            <ul class="nav nav-tabs nav--tabs d-flex justify-content-center mt-3"
-                                                role="tablist">
-                                                {{-- <li class="nav-item">
-                                                    <a class="nav-link __inline-27 active " href="#overview"
-                                                       data-toggle="tab" role="tab">
-                                                        {{translate('overview')}}
-                                                    </a>
-                                                </li> --}}
-                                                {{-- <li class="nav-item">
-                                                    <a class="nav-link __inline-27" href="#reviews" data-toggle="tab"
-                                                       role="tab">
-                                                        {{translate('reviews')}}
-                                                    </a>
-                                                </li> --}}
-                                            </ul>
-                                            <div class="tab-content px-lg-3">
-                                                <div class="tab-pane fade show active text-justify" id="overview"
-                                                     role="tabpanel">
-                                                    <div class="row pt-2 specification">
-
-                                                        @if($product->video_url != null && (str_contains($product->video_url, "youtube.com/embed/")))
-                                                            <div class="col-12 mb-4">
-                                                                <iframe width="420" height="315"
-                                                                        src="{{$product->video_url}}">
-                                                                </iframe>
-                                                            </div>
-                                                        @endif
-                                                        @if ($product['details'])
-                                                            <div class="text-body col-lg-12 col-md-12 overflow-scroll fs-13 text-justify details-text-justify rich-editor-html-content">
-                                                                {!! $product['details'] !!}
-                                                            </div>
-                                                        @endif
-
-                                                    </div>
-                                                    @if (!$product['details'] && ($product->video_url == null || !(str_contains($product->video_url, "youtube.com/embed/"))))
-                                                        <div>
-                                                            <div class="text-center text-capitalize py-5">
-                                                                <img class="mw-90"
-                                                                     src="{{theme_asset(path: 'public/assets/front-end/img/icons/nodata.svg')}}"
-                                                                     alt="">
-                                                                <p class="text-capitalize mt-2">
-                                                                    <small>{{translate('product_details_not_found')}}
-                                                                        !</small>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    @endif
-                                                </div>
-
-                                                {{-- <div class="tab-pane fade" id="reviews" role="tabpanel">
-                                                    @if(count($product->reviews)==0 && $productReviews->total() == 0)
-                                                        <div>
-                                                            <div class="text-center text-capitalize">
-                                                                <img class="mw-100"
-                                                                     src="{{theme_asset(path: 'public/assets/front-end/img/icons/empty-review.svg')}}"
-                                                                     alt="">
-                                                                <p class="text-capitalize">
-                                                                    <small>{{translate('No_review_given_yet')}}!</small>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    @else
-                                                        <div class="row pt-2 pb-3">
-                                                            <div class="col-lg-4 col-md-5 ">
-                                                                <div
-                                                                    class=" row d-flex justify-content-center align-items-center">
-                                                                    <div
-                                                                        class="col-12 d-flex justify-content-center align-items-center">
-                                                                        <h2 class="overall_review mb-2 __inline-28">
-                                                                            {{$overallRating[0]}}
-                                                                        </h2>
-                                                                    </div>
-                                                                    <div
-                                                                        class="d-flex justify-content-center align-items-center star-rating ">
-                                                                        @for($inc=1;$inc<=5;$inc++)
-                                                                            @if ($inc <= (int)$overallRating[0])
-                                                                                <i class="tio-star text-warning"></i>
-                                                                            @elseif ($overallRating[0] != 0 && $inc <= (int)$overallRating[0] + 1.1 && $overallRating[0] > ((int)$overallRating[0]))
-                                                                                <i class="tio-star-half text-warning"></i>
-                                                                            @else
-                                                                                <i class="tio-star-outlined text-warning"></i>
-                                                                            @endif
-                                                                        @endfor
-                                                                    </div>
-                                                                    <div
-                                                                        class="col-12 d-flex justify-content-center align-items-center mt-2">
-                                                                        <span class="text-center">
-                                                                            {{$productReviews->total()}} {{translate('ratings')}}
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-8 col-md-7 pt-sm-3 pt-md-0">
-                                                                <div
-                                                                    class="d-flex align-items-center mb-2 font-size-sm">
-                                                                    <div
-                                                                        class="__rev-txt"><span
-                                                                            class="d-inline-block align-middle text-body">{{translate('excellent')}}</span>
-                                                                    </div>
-                                                                    <div class="w-0 flex-grow">
-                                                                        <div class="progress text-body __h-5px">
-                                                                            <div class="progress-bar web--bg-primary"
-                                                                                 role="progressbar"
-                                                                                 style="width: <?php echo $widthRating = ($rating[0] != 0) ? ($rating[0] / $overallRating[1]) * 100 : (0); ?>%;"
-                                                                                 aria-valuenow="60" aria-valuemin="0"
-                                                                                 aria-valuemax="100"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-1 text-body">
-                                                                        <span
-                                                                            class=" {{Session::get('direction') === "rtl" ? 'mr-3 float-left' : 'ml-3 float-right'}} ">
-                                                                            {{$rating[0]}}
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div
-                                                                    class="d-flex align-items-center mb-2 text-body font-size-sm">
-                                                                    <div
-                                                                        class="__rev-txt"><span
-                                                                            class="d-inline-block align-middle ">{{translate('good')}}</span>
-                                                                    </div>
-                                                                    <div class="w-0 flex-grow">
-                                                                        <div class="progress __h-5px">
-                                                                            <div class="progress-bar web--bg-primary" role="progressbar"
-                                                                                 style="width: <?php echo $widthRating = ($rating[1] != 0) ? ($rating[1] / $overallRating[1]) * 100 : (0); ?>%; background-color: #a7e453;"
-                                                                                 aria-valuenow="27" aria-valuemin="0"
-                                                                                 aria-valuemax="100"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-1">
-                                                                        <span
-                                                                            class="{{Session::get('direction') === "rtl" ? 'mr-3 float-left' : 'ml-3 float-right'}}">
-                                                                                {{$rating[1]}}
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div
-                                                                    class="d-flex align-items-center mb-2 text-body font-size-sm">
-                                                                    <div
-                                                                        class="__rev-txt"><span
-                                                                            class="d-inline-block align-middle ">{{translate('average')}}</span>
-                                                                    </div>
-                                                                    <div class="w-0 flex-grow">
-                                                                        <div class="progress __h-5px">
-                                                                            <div class="progress-bar web--bg-primary" role="progressbar"
-                                                                                 style="width: <?php echo $widthRating = ($rating[2] != 0) ? ($rating[2] / $overallRating[1]) * 100 : (0); ?>%; background-color: #ffda75;"
-                                                                                 aria-valuenow="17" aria-valuemin="0"
-                                                                                 aria-valuemax="100"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-1">
-                                                                        <span
-                                                                            class="{{Session::get('direction') === "rtl" ? 'mr-3 float-left' : 'ml-3 float-right'}}">
-                                                                            {{$rating[2]}}
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div
-                                                                    class="d-flex align-items-center mb-2 text-body font-size-sm">
-                                                                    <div
-                                                                        class="__rev-txt "><span
-                                                                            class="d-inline-block align-middle">{{translate('below_Average')}}</span>
-                                                                    </div>
-                                                                    <div class="w-0 flex-grow">
-                                                                        <div class="progress __h-5px">
-                                                                            <div class="progress-bar web--bg-primary" role="progressbar"
-                                                                                 style="width: <?php echo $widthRating = ($rating[3] != 0) ? ($rating[3] / $overallRating[1]) * 100 : (0); ?>%; background-color: #fea569;"
-                                                                                 aria-valuenow="9" aria-valuemin="0"
-                                                                                 aria-valuemax="100"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-1">
-                                                                        <span
-                                                                            class="{{Session::get('direction') === "rtl" ? 'mr-3 float-left' : 'ml-3 float-right'}}">
-                                                                            {{$rating[3]}}
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div
-                                                                    class="d-flex align-items-center text-body font-size-sm">
-                                                                    <div
-                                                                        class="__rev-txt"><span
-                                                                            class="d-inline-block align-middle ">{{translate('poor')}}</span>
-                                                                    </div>
-                                                                    <div class="w-0 flex-grow">
-                                                                        <div class="progress __h-5px">
-                                                                            <div class="progress-bar web--bg-primary" role="progressbar"
-                                                                                 style="width: <?php echo $widthRating = ($rating[4] != 0) ? ($rating[4] / $overallRating[1]) * 100 : (0); ?>%;"
-                                                                                 aria-valuenow="4" aria-valuemin="0"
-                                                                                 aria-valuemax="100"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-1">
-                                                                        <span
-                                                                            class="{{Session::get('direction') === "rtl" ? 'mr-3 float-left' : 'ml-3 float-right'}}">
-                                                                                {{$rating[4]}}
-                                                                        </span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row pb-4 mb-3">
-                                                            <div class="__inline-30">
-                                                                <span
-                                                                    class="text-capitalize">{{ translate('Product_review') }}</span>
-                                                            </div>
-                                                        </div>
-                                                    @endif
-
-                                                    <div class="row pb-4">
-                                                        <div class="col-12" id="product-review-list">
-                                                            @include('web-views.partials._product-reviews')
-                                                        </div>
-
-                                                        @if(count($product->reviews) > 2)
-                                                            <div class="col-12">
-                                                                <div
-                                                                    class="card-footer d-flex justify-content-center align-items-center">
-                                                                    <button class="btn text-white view_more_button web--bg-primary">
-                                                                        {{ translate('view_more') }}
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                </div> --}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     @isset($product->reviews)
                     <div class="row">
@@ -835,6 +590,43 @@
                             </figure>
                         </div>
                     </div>
+
+                    @isset($product['details'])
+                    <div class="row">
+                        <div class="card col-lg-12 col-12 p-3">
+                            <h5>Overview</h5>
+                            <div class="row pt-2 specification">
+
+                                @if($product->video_url != null && (str_contains($product->video_url, "youtube.com/embed/")))
+                                    <div class="col-12 mb-4">
+                                        <iframe width="420" height="315"
+                                                src="{{$product->video_url}}">
+                                        </iframe>
+                                    </div>
+                                @endif
+                                @if ($product['details'])
+                                    <div class="text-body col-lg-12 col-md-12 overflow-scroll fs-13 text-justify details-text-justify rich-editor-html-content">
+                                        {!! $product['details'] !!}
+                                    </div>
+                                @endif
+
+                            </div>
+                            @if (!$product['details'] && ($product->video_url == null || !(str_contains($product->video_url, "youtube.com/embed/"))))
+                                <div>
+                                    <div class="text-center text-capitalize py-5">
+                                        <img class="mw-90"
+                                             src="{{theme_asset(path: 'public/assets/front-end/img/icons/nodata.svg')}}"
+                                             alt="">
+                                        <p class="text-capitalize mt-2">
+                                            <small>{{translate('product_details_not_found')}}
+                                                !</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    @endif
 
                     @isset($product->reference)
                     <div class="row">
