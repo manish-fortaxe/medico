@@ -51,8 +51,8 @@ class LoginController extends Controller
     {
         session()->put('keep_return_url', url()->previous());
         if(theme_root_path() == 'default'){
-            return view('web-views.customer-views.auth.otp-login');
-            // return view('web-views.customer-views.auth.login');
+            // return view('web-views.customer-views.auth.otp-login');
+            return view('web-views.customer-views.auth.login');
         }else{
             return redirect()->route('home');
         }
