@@ -465,6 +465,7 @@ class ProductService
             'disclaimer' => $request['disclaimer'],
             'pap_description' => $request['pap_description'],
             'hsn_code' => $request['hsn_code'],
+            'cold_chain' => $request['cold_chain'],
             'is_prescription' => $request['is_prescription']=='yes' ? 1 : 0,
             'brand_id' => $request['brand_id'],
             'unit' => $request['product_type'] == 'physical' ? $request['unit'] : null,

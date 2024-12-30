@@ -463,7 +463,7 @@
                                 <div class="d-flex gap-2">
                                     <label class="title-color">{{ translate('length') }}</label>
                                 </div>
-                                <input type="text" placeholder="{{ translate('length') }}" name="length" class="form-control" value="{{ $product->length ?? '' }}" required>
+                                <input type="text" placeholder="{{ translate('length') }}" name="length" class="form-control" value="{{ $product['length'] ?? '' }}" required>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4 col-xl-3 physical_product_show">
@@ -471,7 +471,7 @@
                                 <div class="d-flex gap-2">
                                     <label class="title-color">{{ translate('width') }}</label>
                                 </div>
-                                <input type="text" placeholder="{{ translate('width') }}" name="width" class="form-control" value="{{ $product->width ?? '' }}" required>
+                                <input type="text" placeholder="{{ translate('width') }}" name="width" class="form-control" value="{{ $product['width'] ?? '' }}" required>
                             </div>
                         </div>
 
@@ -480,7 +480,7 @@
                                 <div class="d-flex gap-2">
                                     <label class="title-color">{{ translate('height') }}</label>
                                 </div>
-                                <input type="text" placeholder="{{ translate('height') }}" name="height" class="form-control" value="{{ $product->height ?? '' }}" required>
+                                <input type="text" placeholder="{{ translate('height') }}" name="height" class="form-control" value="{{ $product['height'] ?? '' }}" required>
                             </div>
                         </div>
 
@@ -489,7 +489,7 @@
                                 <div class="d-flex gap-2">
                                     <label class="title-color">{{ translate('weight') }}</label>
                                 </div>
-                                <input type="text" placeholder="{{ translate('weight') }}" name="weight" class="form-control" value="{{ $product->weight ?? '' }}" required>
+                                <input type="text" placeholder="{{ translate('weight') }}" name="weight" class="form-control" value="{{ $product['weight'] ?? '' }}" required>
                             </div>
                         </div>
 
