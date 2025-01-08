@@ -800,6 +800,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']],
                 Route::get(Pages::PRIVACY_POLICY[URI], 'getPrivacyPolicyView')->name('privacy-policy');
                 Route::post(Pages::PRIVACY_POLICY[URI], 'updatePrivacyPolicy')->name('privacy-policy-update');
 
+                Route::get(Pages::SHIPPING_POLICY[URI], 'getShippingPolicyView')->name('shipping-policy');
+                Route::post(Pages::SHIPPING_POLICY[URI], 'updateShippingPolicy')->name('shipping-policy-update');
+
                 Route::get(Pages::DISCLAIMER[URI], 'getDisclaimerView')->name('disclaimer');
                 Route::post(Pages::DISCLAIMER[URI], 'updateDisclaimer')->name('disclaimer-update');
 

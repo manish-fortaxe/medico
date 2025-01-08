@@ -19,6 +19,11 @@ enum Pages
         VIEW => 'admin-views.business-settings.page.privacy-policy'
     ];
 
+    const SHIPPING_POLICY = [
+        URI => 'shipping-policy',
+        VIEW => 'admin-views.business-settings.page.shipping-policy'
+    ];
+
     const ABOUT_US = [
         URI => 'about-us',
         VIEW => 'admin-views.business-settings.page.about-us'

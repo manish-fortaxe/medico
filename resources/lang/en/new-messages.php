@@ -8515,4 +8515,5 @@ return [
 	"if_you`re_unsure_about_the_SMTP_settings,_contact_your_email_service_provider_or_IT_administrator_for_assistance" => "If you`re unsure about the SMTP settings  contact your email service provider or IT administrator for assistance",
 	"if_the_SMTP_connection_test_is_successful,_you_can_now_enable_the_mail_configuration_services_by_toggling_the_switch_to_ON" => "If the SMTP connection test is successful  you can now enable the mail configuration services by toggling the switch to ON",
 	"test_mail" => "Test mail",
+	"delivery_Address" => "Delivery Address",
 ];

@@ -90,6 +90,16 @@ class PageController extends Controller
         return view(VIEW_FILE_NAMES['privacy_policy_page'], compact('privacyPolicy', 'pageTitleBanner', 'robotsMetaContentData'));
     }
 
+    public function getShippingPolicyView(): View
+    {
+        $robotsMetaContentData = $this->robotsMetaContentRepo->getFirstWhere(params: ['page_name' => 'shipping-policy']);
+        if (!$robotsMetaContentData) {
+            $robotsMetaContentData = $this->robotsMetaContentRepo->getFirstWhere(params: ['page_name' => 'default']);
+        }
+        $shippingPolicy = getWebConfig(name: 'shipping_policy');
+        $pageTitleBanner = $this->businessSettingRepo->whereJsonContains(params: ['type' => 'banner_shipping_policy'], value: ['status' => '1']);
+        return view(VIEW_FILE_NAMES['shipping_policy_page'], compact('shippingPolicy', 'pageTitleBanner', 'robotsMetaContentData'));
+    }
     public function getCancellationPolicyView(): View|RedirectResponse
     {
         $robotsMetaContentData = $this->robotsMetaContentRepo->getFirstWhere(params: ['page_name' => 'cancellation-policy']);

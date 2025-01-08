@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\AboutUsRequest;
 use App\Http\Requests\Admin\DisclaimerRequest;
 use App\Http\Requests\Admin\PageUpdateRequest;
 use App\Http\Requests\Admin\PrivacyPolicyRequest;
+use App\Http\Requests\Admin\ShippingPolicyRequest;
 use App\Http\Requests\Admin\TermsConditionRequest;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\View\View;
@@ -59,6 +60,18 @@ class PagesController extends BaseController
         return back();
     }
 
+    public function getShippingPolicyView(): View
+    {
+        $shipping_policy = $this->businessSettingRepo->getFirstWhere(params: ['type'=>'shipping_policy']);
+        return view(Pages::SHIPPING_POLICY[VIEW], compact('shipping_policy'));
+    }
+
+    public function updateShippingPolicy(ShippingPolicyRequest $request): RedirectResponse
+    {
+        $this->businessSettingRepo->updateWhere(params: ['type'=>'shipping_policy'], data: ['value' => $request['value']]);
+        Toastr::success(translate('Shipping_policy_Updated_successfully'));
+        return back();
+    }
 
     public function getPageView($page): View|RedirectResponse
     {

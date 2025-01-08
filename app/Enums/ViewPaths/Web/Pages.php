@@ -34,6 +34,11 @@ enum Pages
         VIEW => ''
     ];
 
+    const SHIPPING_POLICY = [
+        URI => 'shipping-policy',
+        VIEW => ''
+    ];
+
     const CANCELLATION_POLICY = [
         URI => 'cancellation-policy',
         VIEW => ''
