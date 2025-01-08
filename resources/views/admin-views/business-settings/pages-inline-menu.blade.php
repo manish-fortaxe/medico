@@ -5,6 +5,8 @@
                 href="{{route('admin.business-settings.terms-condition')}}">{{translate('terms_&_Conditions')}}</a></li>
         <li class="{{ Request::is('admin/business-settings/'.Pages::PRIVACY_POLICY[URI]) ?'active':'' }}"><a
                 href="{{route('admin.business-settings.privacy-policy')}}">{{translate('privacy_Policy')}}</a></li>
+        <li class="{{ Request::is('admin/business-settings/'.Pages::SHIPPING_POLICY[URI]) ?'active':'' }}"><a
+            href="{{route('admin.business-settings.shipping-policy')}}">{{translate('shipping_Policy')}}</a></li>
         <li class="{{ Request::is('admin/business-settings/'.Pages::DISCLAIMER[URI]) ?'active':'' }}"><a
             href="{{route('admin.business-settings.disclaimer')}}">{{translate('disclaimer')}}</a></li>
         <li class="{{ Request::is('admin/business-settings/'.Pages::VIEW[URI].'/refund-policy') ?'active':'' }}"><a

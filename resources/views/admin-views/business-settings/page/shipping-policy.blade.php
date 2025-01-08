@@ -19,7 +19,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mb-0">{{translate('privacy_policy')}}</h5>
+                        <h5 class="mb-0">{{translate('shipping_policy')}}</h5>
                     </div>
                     <form action="{{route('admin.business-settings.shipping-policy-update')}}" method="post">
                         @csrf
