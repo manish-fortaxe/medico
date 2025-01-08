@@ -338,6 +338,11 @@
                                href="{{route('terms')}}">{{ translate('terms_&_conditions')}}</a>
                         </div>
                         <div>
+                            <a class="widget-list-link" href="{{route('shipping-policy')}}">
+                                {{ translate('shipping_policy')}}
+                            </a>
+                        </div>
+                        <div>
                             <a class="widget-list-link" href="{{route('privacy-policy')}}">
                                 {{ translate('privacy_policy')}}
                             </a>
