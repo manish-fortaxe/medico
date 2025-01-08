@@ -337,9 +337,9 @@
                             <a class="widget-list-link"
                                href="{{route('terms')}}">{{ translate('terms_&_conditions')}}</a>
                         </div>
-                        <div>
+                        <div class="me-3">
                             <a class="widget-list-link" href="{{route('shipping-policy')}}">
-                                {{ translate('shipping_policy')}}
+                                {{ translate('shipping_Policy')}}
                             </a>
                         </div>
                         <div>
