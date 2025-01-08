@@ -278,6 +278,12 @@
                                 <input type="text" class="form-control" name="indication" value="{{ $product->indication ?? '' }}" />
                             </div>
                         </div>
+                        <div class="col-md-6 col-lg-4 col-xl-12 physical_product_show">
+                            <div class="form-group">
+                                <label class="title-color">{{ translate('PAP_Scheme') }}</label>
+                                <textarea name="pap_description" class="form-control">{{ $product->pap_description ?? '' }} </textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
