@@ -3,6 +3,7 @@
 return [
     'home' => 'web-views.home',
     'product_search_result' => 'web-views.partials._search-result',
+    'shipping_policy_page' => 'web-views.pages.shipping-policy',
     'privacy_policy_page' => 'web-views.pages.privacy-policy',
     'refund_policy_page' => 'web-views.pages.refund-policy',
     'return_policy_page' => 'web-views.pages.return-policy',
