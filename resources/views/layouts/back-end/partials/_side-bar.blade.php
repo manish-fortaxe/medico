@@ -397,7 +397,7 @@
                                    href="javascript:" title="{{translate('in-House_Products')}}">
                                     <i class="tio-shop nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                        <span class="text-truncate">{{translate('products')}}</span>
+                                        <span class="text-truncate">{{translate('product_Section')}}</span>
                                     </span>
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
