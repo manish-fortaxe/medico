@@ -397,7 +397,7 @@
                                    href="javascript:" title="{{translate('in-House_Products')}}">
                                     <i class="tio-shop nav-icon"></i>
                                     <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                        <span class="text-truncate">{{translate('in-house_Products')}}</span>
+                                        <span class="text-truncate">{{translate('products')}}</span>
                                     </span>
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
@@ -429,7 +429,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="navbar-vertical-aside-has-menu {{Request::is('admin/products/'.Product::LIST[URI].'/vendor*')||(Request::is('admin/products/'.\App\Enums\ViewPaths\Admin\Product::VIEW[URI].'/vendor/*'))||Request::is('admin/products/'.\App\Enums\ViewPaths\Admin\Product::UPDATED_PRODUCT_LIST[URI])?'active':''}}">
+                            {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/products/'.Product::LIST[URI].'/vendor*')||(Request::is('admin/products/'.\App\Enums\ViewPaths\Admin\Product::VIEW[URI].'/vendor/*'))||Request::is('admin/products/'.\App\Enums\ViewPaths\Admin\Product::UPDATED_PRODUCT_LIST[URI])?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:"
                                    title="{{translate('vendor_Products')}}">
@@ -490,7 +490,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/products/'.Product::PRODUCT_GALLERY[URI])?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.products.product-gallery')}}"
@@ -843,7 +843,7 @@
                                 </ul>
                             </li>
 
-                            <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/vendors*') || Request::is('admin/vendors/withdraw-method/*') || (Request::is('admin/orders/details/*') && request()->has('vendor-order-list')) ? 'active' : '' }}">
+                            {{-- <li class="navbar-vertical-aside-has-menu {{ Request::is('admin/vendors*') || Request::is('admin/vendors/withdraw-method/*') || (Request::is('admin/orders/details/*') && request()->has('vendor-order-list')) ? 'active' : '' }}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:" title="{{translate('vendors')}}">
                                     <i class="tio-users-switch nav-icon"></i>
@@ -927,7 +927,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
 
                             @if(auth('admin')->user()->admin_role_id==1)
                                 <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/employee*') || Request::is('admin/custom-role*'))?'active':''}}">
@@ -1083,7 +1083,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="navbar-vertical-aside-has-menu ">
+                            {{-- <li class="navbar-vertical-aside-has-menu ">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:" title="{{translate('system_Setup')}}">
                                     <i class="tio-pages-outlined nav-icon"></i>
@@ -1216,7 +1216,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
 
                             <li class="navbar-vertical-aside-has-menu {{ (
                                 Request::is('admin/business-settings/'.Pages::TERMS_CONDITION[URI]) ||

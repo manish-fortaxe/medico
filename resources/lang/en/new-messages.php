@@ -8516,4 +8516,5 @@ return [
 	"if_the_SMTP_connection_test_is_successful,_you_can_now_enable_the_mail_configuration_services_by_toggling_the_switch_to_ON" => "If the SMTP connection test is successful  you can now enable the mail configuration services by toggling the switch to ON",
 	"test_mail" => "Test mail",
 	"delivery_Address" => "Delivery Address",
+	"shipping_Policy" => "Shipping Policy",
 ];
