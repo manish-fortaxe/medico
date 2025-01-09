@@ -335,6 +335,10 @@
                     <div class="d-flex __text-14px justify-content-center">
                         <div class="me-3">
                             <a class="widget-list-link"
+                               href="{{asset('public/assets/front-end/Shantilal Co - Renewed Drug License - 2024-2029.pdf')}}" target="_blank">{{ translate('license')}}</a>
+                        </div>
+                        <div class="me-3">
+                            <a class="widget-list-link"
                                href="{{route('terms')}}">{{ translate('terms_&_conditions')}}</a>
                         </div>
                         <div class="me-3">
