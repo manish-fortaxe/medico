@@ -180,9 +180,9 @@
 
                 </div>
                 <div class="mb-3">
-                    @isset($product->molecules)
-                    <p><b>Salt Composition :</b> {!! salt_composition($product->id) !!}</p>
-                    @endisset
+                    @if($product->molecules->isNotEmpty())
+                        <p><b>Salt Composition :</b> {!! salt_composition($product->id) !!}</p>
+                    @endif
                     @isset($product->brand)<p><b>Manufacturer :</b> {{ $product->brand->name }}</p>@endisset
                     @isset($product->origin)<p><b>Origin of Medicine :</b> {{ $product->origin }}</p>@endisset
                 </div>

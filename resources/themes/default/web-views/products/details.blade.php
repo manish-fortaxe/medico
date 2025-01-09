@@ -286,8 +286,8 @@
 
                                         </div>
 
-                                        @isset($product->molecules)
-                                        <p class="small-text"><b>Salt Composition :</b> {!! salt_composition($product->id) !!}</p>
+                                        @if($product->molecules->isNotEmpty())
+                                            <p class="small-text"><b>Salt Composition :</b> {!! salt_composition($product->id) !!}</p>
                                         @endisset
                                         @isset($product->brand)<p class="small-text"><b>Manufacturer :</b> {{ $product->brand->name }}</p>@endisset
                                         @isset($product->origin)<p class="small-text"><b>Origin of Medicine :</b> {{ $product->origin }}</p>@endisset
