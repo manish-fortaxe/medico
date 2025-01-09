@@ -156,6 +156,16 @@
                                 <div class="mb-3">
                                     <span class="font-weight-normal text-accent d-flex align-items-end gap-2">
                                         {!! getPriceRangeWithDiscount(product: $product) !!}
+
+                                        @if ($product->discount_type == 'percent')
+                                            <span style="background-color: #1caf88; color:white;border-radius: 6px;font-size: 13px;font-weight: 700;padding:5px;">
+                                                You save {{ round($product->discount, (!empty($decimalPointSettings) ? $decimalPointSettings : 0)) }}%
+                                            </span>
+                                        @elseif($product->discount_type == 'flat')
+                                            <span style="background-color: #1caf88; color:white;border-radius: 6px;font-size: 13px;font-weight: 700;padding:5px;">
+                                                You save {{ webCurrencyConverter(amount: $product->discount) }}
+                                            </span>
+                                        @endif
                                     </span>
                                 </div>
 
@@ -351,7 +361,7 @@
                                                 <span class="string-limit">{{ translate('add_to_cart') }}</span>
                                             </button>
                                         @endif
-                                        <button type="button" data-product-id="{{ $product['id'] }}" class="btn __text-18px border d-none d-sm-block product-action-add-wishlist">
+                                        {{-- <button type="button" data-product-id="{{ $product['id'] }}" class="btn __text-18px border d-none d-sm-block product-action-add-wishlist">
                                             <i class="fa {{($wishlistStatus == 1?'fa-heart':'fa-heart-o')}} wishlist_icon_{{$product['id']}} web-text-primary"
                                                aria-hidden="true"></i>
                                             <span class="fs-14 text-muted align-bottom countWishlist-{{$product['id']}}">{{$countWishlist}}</span>
@@ -361,7 +371,7 @@
                                                     <span class="remove">{{translate('removed_from_wishlist')}}</span>
                                                 </div>
                                             </div>
-                                        </button>
+                                        </button> --}}
                                         @if(($product->added_by == 'seller' && ($sellerTemporaryClose || (isset($product->seller->shop) && $product->seller->shop->vacation_status && $currentDate >= $sellerVacationStartDate && $currentDate <= $sellerVacationEndDate))) ||
                                          ($product->added_by == 'admin' && ($inHouseTemporaryClose || ($inHouseVacationStatus && $currentDate >= $inHouseVacationStartDate && $currentDate <= $inHouseVacationEndDate))))
                                             <div class="alert alert-danger" role="alert">

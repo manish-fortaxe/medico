@@ -125,7 +125,7 @@
             <div class="details __h-100">
                 <a href="{{route('product',$product->slug)}}" class="h3 mb-2 product-title">{{$product->name}}</a>
 
-                <div class="d-flex flex-wrap align-items-center mb-2 pro">
+                {{-- <div class="d-flex flex-wrap align-items-center mb-2 pro">
                     <div class="star-rating me-2">
                         @for($inc=0;$inc<5;$inc++)
                             @if($inc<$overallRating[0])
@@ -148,24 +148,34 @@
                         <span class="web-text-primary countWishlist-{{ $product->id }}"> {{$countWishlist}}</span> {{translate('wish_listed')}}
                     </span>
 
-                </div>
+                </div> --}}
 
                 <div class="mb-3">
                     <span class="font-weight-normal text-accent d-flex align-items-end gap-2">
                         {!! getPriceRangeWithDiscount(product: $product) !!}
+
+                        @if ($product->discount_type == 'percent')
+                            <span style="background-color: #1caf88; color:white;border-radius: 6px;font-size: 13px;font-weight: 700;padding:5px;">
+                                You save {{ round($product->discount, (!empty($decimalPointSettings) ? $decimalPointSettings : 0)) }}%
+                            </span>
+                        @elseif($product->discount_type == 'flat')
+                            <span style="background-color: #1caf88; color:white;border-radius: 6px;font-size: 13px;font-weight: 700;padding:5px;">
+                                You save {{ webCurrencyConverter(amount: $product->discount) }}
+                            </span>
+                        @endif
                     </span>
                 </div>
                 <div class="mb-2">
                     @if($product?->is_prescription == 1)
-                    <span class="badge badge-pill badge-light border border-1" style="border-color:#ff0000 !important" ><img src="{{ asset('public/images/prescription.png') }}" width="20" /> Prescription</span>
+                    <span class="badge badge-pill badge-light border border-1" style="border-color:#ff0000 !important;font-weight: 700;" ><img src="{{ asset('public/images/prescription.png') }}" width="20" /> Prescription</span>
                     @endisset
 
                     @if($product?->cold_chain)
-                    <span class="badge badge-pill badge-light border border-1" data-toggle="tooltip" data-placement="top" title="Medicines Packed And Stored At The Optimum Temperature" style="border-color:#69b3fe !important" ><img src="{{ asset('public/images/coldchain.png') }}" width="20" />    Cold Chain</span>
+                    <span class="badge badge-pill badge-light border border-1" data-toggle="tooltip" data-placement="top" title="Medicines Packed And Stored At The Optimum Temperature" style="border-color:#69b3fe !important;font-weight: 700;" ><img src="{{ asset('public/images/coldchain.png') }}" width="20" />    Cold Chain</span>
                     @endisset
 
                     @if($product?->pap_description)
-                    <span class="badge badge-pill badge-light border border-1" style="border-color:#1caf88 !important" ><img src="{{ asset('public/images/pap_scheme.png') }}" width="20" /> PAP Scheme</span>
+                    <span class="badge badge-pill badge-light border border-1" style="border-color:#1caf88 !important;font-weight: 700;" ><img src="{{ asset('public/images/pap_scheme.png') }}" width="20" /> PAP Scheme</span>
                     @endisset
 
                 </div>
@@ -307,8 +317,7 @@
                                     </div>
                                     &nbsp; <strong id="chosen_price" class="text-base"></strong>
                                     <small class="ms-2 font-regular">
-                                        (<small>{{translate('tax')}} : </small>
-                                        <small id="set-tax-amount"></small>)
+                                        (<small>{{translate('GST_Included')}}</small>)
                                     </small>
                                 </div>
                             </div>
@@ -339,7 +348,7 @@
                             </button>
                         @endif
 
-                        <button type="button" data-product-id="{{$product['id']}}" class="btn __text-18px border product-action-add-wishlist">
+                        {{-- <button type="button" data-product-id="{{$product['id']}}" class="btn __text-18px border product-action-add-wishlist">
                             <i class="fa {{($wishlist_status == 1?'fa-heart':'fa-heart-o')}} wishlist_icon_{{$product['id']}} web-text-primary"
                             id="wishlist_icon_{{$product['id']}}" aria-hidden="true"></i>
                             <span class="fs-14 text-muted align-bottom countWishlist-{{$product['id']}}">
@@ -351,7 +360,7 @@
                                     <span class="remove">{{translate('removed_from_wishlist')}}</span>
                                 </div>
                             </div>
-                        </button>
+                        </button> --}}
 
                         @if(($product->added_by == 'seller' && ($seller_temporary_close ||
                         (isset($product->seller->shop) && $product->seller->shop->vacation_status && $currentDate >=
