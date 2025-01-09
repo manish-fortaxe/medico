@@ -181,10 +181,10 @@
                 </div>
                 <div class="mb-3">
                     @if($product->molecules->isNotEmpty())
-                        <p><b>Salt Composition :</b> {!! salt_composition($product->id) !!}</p>
+                        <p><b>Salt Composition:</b> {!! salt_composition($product->id) !!}</p>
                     @endif
-                    @isset($product->brand)<p><b>Manufacturer :</b> {{ $product->brand->name }}</p>@endisset
-                    @isset($product->origin)<p><b>Origin of Medicine :</b> {{ $product->origin }}</p>@endisset
+                    @isset($product->brand)<p><b>Manufacturer:</b> {{ $product->brand->name }}</p>@endisset
+                    @isset($product->origin)<p><b>Origin of Medicine:</b> {{ $product->origin }}</p>@endisset
                 </div>
                 <form id="add-to-cart-form" class="mb-2">
                     @csrf
