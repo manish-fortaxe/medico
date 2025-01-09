@@ -67,7 +67,7 @@ class HomeController extends Controller
 
         $theme_name = theme_root_path();
         $brand_setting = BusinessSetting::where('type', 'product_brand')->first()->value;
-        $homeCategories = Category::where('home_status', true)->priority()->get();
+        $homeCategories = Category::where('home_status', 1)->priority()->get();
         $homeCategories->map(function ($data) {
             $id = '"' . $data['id'] . '"';
             $homeCategoriesProducts = Product::active()
