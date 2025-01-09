@@ -180,7 +180,7 @@
 
                 </div>
                 <div class="mb-3">
-                    @isset($product->tags)
+                    @isset($product->molecules)
                     <p><b>Salt Composition :</b> {!! salt_composition($product->id) !!}</p>
                     @endisset
                     @isset($product->brand)<p><b>Manufacturer :</b> {{ $product->brand->name }}</p>@endisset

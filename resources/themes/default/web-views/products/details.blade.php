@@ -286,7 +286,7 @@
 
                                         </div>
 
-                                        @isset($product->tags)
+                                        @isset($product->molecules)
                                         <p class="small-text"><b>Salt Composition :</b> {!! salt_composition($product->id) !!}</p>
                                         @endisset
                                         @isset($product->brand)<p class="small-text"><b>Manufacturer :</b> {{ $product->brand->name }}</p>@endisset
