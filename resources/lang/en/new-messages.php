@@ -8517,4 +8517,7 @@ return [
 	"test_mail" => "Test mail",
 	"delivery_Address" => "Delivery Address",
 	"shipping_Policy" => "Shipping Policy",
+	"other_Substitute_Medicines" => "Other Substitute Medicines",
+	"substitute_Medicines" => "Substitute Medicines",
+	"GST_Included" => "GST Included",
 ];

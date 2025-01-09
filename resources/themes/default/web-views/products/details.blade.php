@@ -129,7 +129,7 @@
                         <div class="col-lg-7 col-md-8 col-12 mt-md-0 mt-sm-3 web-direction">
                             <div class="details __h-100">
                                 <span class="mb-2 __inline-24">{{$product->name}}</span>
-                                <div class="d-flex flex-wrap align-items-center mb-2 pro">
+                                {{-- <div class="d-flex flex-wrap align-items-center mb-2 pro">
                                     <div class="star-rating me-2">
                                         @for($inc=1;$inc<=5;$inc++)
                                             @if ($inc <= (int)$overallRating[0])
@@ -152,7 +152,7 @@
                                     <span
                                         class="font-regular font-for-tab d-inline-block font-size-sm text-body align-middle mt-1 {{Session::get('direction') === "rtl" ? 'mr-1 ml-md-2 ml-0 pr-md-2 pr-sm-1 pl-md-2 pl-sm-1' : 'ml-1 mr-md-2 mr-0 pl-md-2 pl-sm-1 pr-md-2 pr-sm-1'}} text-capitalize"> <span class="web-text-primary countWishlist-{{ $product->id }}"> {{$countWishlist}}</span> {{translate('wish_listed')}} </span>
 
-                                </div>
+                                </div> --}}
                                 <div class="mb-3">
                                     <span class="font-weight-normal text-accent d-flex align-items-end gap-2">
                                         {!! getPriceRangeWithDiscount(product: $product) !!}
@@ -263,15 +263,15 @@
 
                                         <div class="mb-2">
                                             @if($product?->is_prescription == 1)
-                                            <span class="badge badge-pill badge-light border border-1" style="border-color:#ff0000 !important" ><img src="{{ asset('public/images/prescription.png') }}" width="20" /> Prescription</span>
+                                            <span class="badge badge-pill badge-light border border-1" style="border-color:#ff0000 !important;font-weight: 700;" ><img src="{{ asset('public/images/prescription.png') }}" width="20" /> Prescription</span>
                                             @endisset
 
                                             @if($product?->cold_chain)
-                                            <span class="badge badge-pill badge-light border border-1" data-toggle="tooltip" data-placement="top" title="Medicines Packed And Stored At The Optimum Temperature" style="border-color:#69b3fe !important" ><img src="{{ asset('public/images/coldchain.png') }}" width="20" />    Cold Chain</span>
+                                            <span class="badge badge-pill badge-light border border-1" data-toggle="tooltip" data-placement="top" title="Medicines Packed And Stored At The Optimum Temperature" style="border-color:#69b3fe !important;font-weight: 700;" ><img src="{{ asset('public/images/coldchain.png') }}" width="20" />    Cold Chain</span>
                                             @endisset
 
                                             @if($product?->pap_description)
-                                            <span class="badge badge-pill badge-light border border-1" style="border-color:#1caf88 !important" ><img src="{{ asset('public/images/pap_scheme.png') }}" width="20" /> PAP Scheme</span>
+                                            <span class="badge badge-pill badge-light border border-1" style="border-color:#1caf88 !important;font-weight: 700;" ><img src="{{ asset('public/images/pap_scheme.png') }}" width="20" /> PAP Scheme</span>
                                             @endisset
 
                                         </div>
@@ -324,10 +324,8 @@
                                                         <strong>{{translate('total_price')}}</strong> :
                                                     </div>
                                                     &nbsp; <strong id="chosen_price" class="text-base"></strong>
-                                                    <small
-                                                        class="ms-2 font-regular">
-                                                        (<small>{{translate('tax')}} : </small>
-                                                        <small id="set-tax-amount"></small>)
+                                                    <small class="ms-2 font-regular">
+                                                        (<small>{{translate('GST_Included')}}</small>)
                                                     </small>
                                                 </div>
                                             </div>
@@ -385,7 +383,7 @@
                         </div>
                     </div>
 
-                    @isset($product->reviews)
+                    {{-- @isset($product->reviews)
                     <div class="row">
                         @if(count($product->reviews)==0 && $productReviews->total() == 0)
                             <div>
@@ -568,7 +566,7 @@
                             @endif
                         </div>
                     </div>
-                    @endif
+                    @endif --}}
 
                     <div class="row">
                         <div class="card col-lg-12 col-12 p-3">
@@ -637,6 +635,19 @@
                     </div>
                     @endif
 
+                    {{-- @isset($product->disclaimer)
+                    <div class="row mb-3">
+                        <div class="card col-lg-12 col-12 p-3">
+                            <h5>Authors</h5>
+                            <div>
+                                @foreach($authorDetails as $item)
+                                    @include('web-views.partials._product-author-details1',['product'=>$item,'decimal_point_settings'=>$decimalPointSettings])
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    @endisset --}}
+
                     @isset($product->disclaimer)
                     <div class="row mb-3">
                         <div class="card col-lg-12 col-12 p-3">
@@ -648,24 +659,6 @@
 
                 </div>
                 <div class="col-lg-3">
-                    @php($companyReliability = getWebConfig('company_reliability'))
-                    @if($companyReliability != null)
-                        <div class="product-details-shipping-details">
-                            @foreach ($companyReliability as $key=>$value)
-                                @if ($value['status'] == 1 && !empty($value['title']))
-                                    <div class="shipping-details-bottom-border">
-                                        <div class="px-3 py-3">
-                                            <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}} __img-20"
-                                                 src="{{ getStorageImages(path: imagePathProcessing(imageData: $value['image'],path: 'company-reliability'), type: 'source', source: 'public/assets/front-end/img'.'/'.$value['item'].'.png') }}"
-                                                alt="">
-                                            <span>{{translate($value['title'])}}</span>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    @endif
-
                     @if(getWebConfig(name: 'business_mode')=='multi')
                     <div class="__inline-31">
 
@@ -836,21 +829,10 @@
 
                     <div class="pt-4 pb-3">
                         <span class=" __text-16px font-bold text-capitalize">
-                            {{ translate('author_Details')}}
-                        </span>
-                    </div>
-                    <div>
-                        @foreach($authorDetails as $item)
-                            @include('web-views.partials._product-author-details',['product'=>$item,'decimal_point_settings'=>$decimalPointSettings])
-                        @endforeach
-                    </div>
-
-                    <div class="pt-4 pb-3">
-                        <span class=" __text-16px font-bold text-capitalize">
                             @if(getWebConfig(name: 'business_mode')=='multi')
                                 {{ translate('more_from_the_store')}}
                             @else
-                                {{ translate('you_may_also_like')}}
+                                {{ translate('substitute_Medicines')}}
                             @endif
                         </span>
                     </div>
@@ -859,7 +841,25 @@
                             @include('web-views.partials._seller-products-product-details',['product'=>$item,'decimal_point_settings'=>$decimalPointSettings])
                         @endforeach
                     </div>
+                    @php($companyReliability = getWebConfig('company_reliability'))
+                    @if($companyReliability != null)
+                        <div class="product-details-shipping-details">
+                            @foreach ($companyReliability as $key=>$value)
+                                @if ($value['status'] == 1 && !empty($value['title']))
+                                    <div class="shipping-details-bottom-border">
+                                        <div class="px-3 py-3">
+                                            <img class="{{Session::get('direction') === "rtl" ? 'float-right ml-2' : 'mr-2'}} __img-20"
+                                                 src="{{ getStorageImages(path: imagePathProcessing(imageData: $value['image'],path: 'company-reliability'), type: 'source', source: 'public/assets/front-end/img'.'/'.$value['item'].'.png') }}"
+                                                alt="">
+                                            <span>{{translate($value['title'])}}</span>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
+
             </div>
 
         </div>
@@ -904,13 +904,13 @@
             </div>
         </div>
 
-        @if (count($relatedProducts)>0)
+        {{-- @if (count($relatedProducts)>0)
             <div class="container rtl text-align-direction">
                 <div class="card __card border-0">
                     <div class="card-body">
                         <div class="row flex-between">
                             <div class="ms-1">
-                                <h4 class="text-capitalize font-bold fs-16">{{ translate('similar_products')}}</h4>
+                                <h4 class="text-capitalize font-bold fs-16">{{ translate('other_Substitute_Medicines')}}</h4>
                             </div>
                             <div class="view_all d-flex justify-content-center align-items-center">
                                 <div>
@@ -935,7 +935,7 @@
                     </div>
                 </div>
             </div>
-        @endif
+        @endif --}}
 
         <div class="modal fade rtl text-align-direction" id="show-modal-view" tabindex="-1" role="dialog" aria-labelledby="show-modal-image"
              aria-hidden="true">

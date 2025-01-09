@@ -69,7 +69,7 @@
                                  alt="{{ $web_config['name']->value }}"/>
                         </a>
 
-                        <p class="mt-4">Demo text</p>
+                        {{-- <p class="mt-4">Demo text</p> --}}
 
                     </div>
                     <div class="col-md-9">
