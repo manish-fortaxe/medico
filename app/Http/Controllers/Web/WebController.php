@@ -135,7 +135,7 @@ class WebController extends Controller
             $query->with(['childes' => function ($query) {
                 $query->withCount(['subSubCategoryProduct'])->where('position', 2);
             }])->withCount(['subCategoryProduct'])->where('position', 1);
-        }, 'childes.childes'])->where('position', 0)->get();
+        }, 'childes.childes'])->where('position', 0)->where('home_status', 1)->get();
 
         return view('web-views.products.categories', [
             'categories' => CategoryManager::getPriorityWiseCategorySortQuery(query: $categories),
