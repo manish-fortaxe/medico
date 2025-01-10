@@ -256,7 +256,7 @@
                                 @php($categoryIndex=0)
                                 @foreach($categories as $category)
                                     @php($categoryIndex++)
-                                    @if($categoryIndex < 10 && $category->home_status == 1)
+                                    @if($categoryIndex < 10)
                                         <li class="dropdown">
 
                                             <a <?php if ($category->childes->count() > 0) echo "" ?>

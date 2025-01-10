@@ -77,7 +77,7 @@ class CategoryManager
             $query->with(['childes' => function ($query) {
                 $query->withCount(['subSubCategoryProduct'])->where('position', 2);
             }])->withCount(['subCategoryProduct'])->where('position', 1);
-        }, 'childes.childes'])->where('position', 0);
+        }, 'childes.childes'])->where('position', 0)->where('home_status', 1);
 
         $categoriesProcessed = self::getPriorityWiseCategorySortQuery(query: $categories->get());
         if ($dataLimit) {
