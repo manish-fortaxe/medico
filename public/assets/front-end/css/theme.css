@@ -11851,8 +11851,8 @@ hr {
 
 b,
 strong {
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: 700;
+    font-size: 20px;
     color : var(--web-primary);
 }
 
